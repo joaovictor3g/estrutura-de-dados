@@ -2,13 +2,20 @@
 
 using namespace std;
 
-void loop(){
-    cout << "É recursiva" << endl;
-    loop();
+void loop(int num, int cont=0);
+
+void loop(int num, int cont){
+    cout << cont << " ";
+    if(cont % 10 == 0)
+        cout << endl;
+
+    if(num > cont)
+        loop(num, ++cont);
+
 }
 
 int main() {
-    loop();
-    
+    loop(100000);
+
     return 0;
 }
