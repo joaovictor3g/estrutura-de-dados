@@ -1,0 +1,1 @@
+char *strcpy(char *destino, char *origem);
