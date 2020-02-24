@@ -6,7 +6,8 @@ int main() {
 
     Color cor = Color::RED;
     Fruit fruit = Fruit::BANANA;
-
+    
+    //Erro de compilação
     if(cor == fruit)
         std::cout << "Cor e fruta são iguais" << std::endl;
     else
