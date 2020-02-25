@@ -9,15 +9,20 @@ char *strcpy(char *destino, char *origem) {
 }
 
 int strcmp(char *str1, char *str2) {
-    int cont1{0}, cont2{0};
+    int cont1{0}, cont2{0}, varRetorno = 0;
 
     while(str1[cont1])  cont1++;
     while(str2[cont2])  cont2++;
 
-    if(cont1 == cont2)  return 0;
-    else if(cont1 < cont2)  return -1;
-    else return 1;
-    return 2;
+    if(cont1 == cont2)  
+        varRetorno = 0;
+
+    else if(cont1 < cont2)  
+        varRetorno = -1;
+
+    else 
+        varRetorno = 1;
+    return varRetorno;
 }
 
 int main() {
@@ -26,7 +31,7 @@ int main() {
 
     std::cout << strcpy(str2, str1) << std::endl;
 
-    char str3[]{"ola!"};
+    char str3[]{"olá"};
     char str4[]{"ola"};
     std::cout << strcmp(str3, str4) << std::endl;
     
