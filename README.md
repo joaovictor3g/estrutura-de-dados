@@ -1,6 +1,6 @@
 # Estrutura de Dados
     
-    Disciplina: Estrutura de Dados
+Disciplina: Estrutura de Dados
         
-       - [] Revisão FUP
-       - [] Recursão
+- [x] Revisão FUP
+- [x] Recursão
