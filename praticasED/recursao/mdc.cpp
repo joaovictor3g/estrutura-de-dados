@@ -16,9 +16,6 @@ int algoritmoEuclides(int dividendo, int divisor){
 }
 
 int minimoMultiploComum(int a, int b){
-    
-
-    
     return a * b / algoritmoEuclides(a, b); 
 }
 
