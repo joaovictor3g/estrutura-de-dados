@@ -1,5 +1,5 @@
 # Estrutura de Dados
     
-## Disciplina: Estrutura de Dados
+## Aulas
         
 - [x] Revisão FUP
