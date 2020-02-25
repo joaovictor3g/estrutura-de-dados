@@ -3,4 +3,4 @@
 Disciplina: Estrutura de Dados
         
 - [x] Revisão FUP
-- [] Recursão
+- [o] Recursão
