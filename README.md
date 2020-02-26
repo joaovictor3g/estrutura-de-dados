@@ -1,9 +1,8 @@
-# Estrutura de Dados
+# `Estrutura de Dados`
     
-## Aulas
+## `Aulas`
 
 - [x] Revisão FUP
-- [ ] Recursão
 - [ ] Análise de complexidade
 - [ ] Listas Sequenciais
 - [ ] Listas Encadeadas
@@ -11,13 +10,13 @@
 - [ ] Árvores binárias: representaçaõ e busca
 - [ ] Algoritmos de Ordenação
 
-## Provas
+## `Provas`
 
 - [ ] AP1 - 01/04/2020
 - [ ] AP2 - 13/05/2020
 - [ ] AP3 - 17/06/2020
 
-## Trabalhos
+## `Trabalhos`
 
 - [ ] T1
 - [ ] T2
