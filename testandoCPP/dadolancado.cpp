@@ -22,25 +22,29 @@ int main() {
                 break;
     
             case 4:
-                ++freq5;
+                ++freq4;
                 break;
     
             case 5:
-                ++freq6;
+                ++freq5;
                 break; 
-    
+
+            case 6:
+                ++freq6;
+                break;
+
             default:
                 std::cout << "The program should never get here!" << std::endl;
                 break;
         }
     }
     std::cout << "Face" << std::setw(13) << "Frequency" << std::endl;
-    std::cout << "   1" << std::setw(13) << "frequency 1\n"
-              << "   2" << std::setw(13) << "frequency 2\n"
-              << "   3" << std::setw(13) << "frequency 3\n"
-              << "   4" << std::setw(13) << "frequency 4\n"
-              << "   5" << std::setw(13) << "frequency 5\n"
-              << "   6" << std::setw(13) << "frequency 6\n" << std::endl;
+    std::cout << "   1" << std::setw(13) << freq1
+            << "\n   2" << std::setw(13) << freq2
+            << "\n   3" << std::setw(13) << freq3
+            << "\n   4" << std::setw(13) << freq4
+            << "\n   5" << std::setw(13) << freq5
+            << "\n   6" << std::setw(13) << freq6 << std::endl;
 
     return 0;
 }
