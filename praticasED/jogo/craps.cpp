@@ -24,7 +24,11 @@ int rollDice() {
 int main() {
     std::srand(time(NULL));
 
-    enum Status { CONTINUE, WON, LOST };
+    enum Status { 
+        CONTINUE, 
+        WON, 
+        LOST 
+    };
     int score = 0;
 
     Status gameStatus;
