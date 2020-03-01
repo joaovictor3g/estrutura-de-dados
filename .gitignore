@@ -1,4 +1,6 @@
 .vscode
+*.txt
+*
 # Prerequisites
 *.d
 
