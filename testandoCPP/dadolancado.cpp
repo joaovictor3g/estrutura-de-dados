@@ -3,6 +3,7 @@
 #include <cstdlib>
 
 int main() {
+    std::srand(time(NULL));
     int freq1 = 0, freq2 = 0, freq3 = 0, freq4 = 0, freq5 = 0, freq6 = 0, face = 0; 
 
     for(int roll = 0; roll <= 6000000; roll++) {
