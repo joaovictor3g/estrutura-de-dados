@@ -2,7 +2,7 @@
 
 void ordenarLinhaOuColunaCrescenteEDecrescente(int **matriz, int linhas, int colunas) {
     bool ordenado = false;
-
+    int menor = 10000;
     while(!ordenado) {
         ordenado = true;
         for(int i = 0; i < linhas-1; i++) {
@@ -55,7 +55,7 @@ int main() {
 
     ordenarLinhaOuColunaCrescenteEDecrescente(matriz, linhas, colunas);
 
-    for(int i = 0; i < 3; i++)
+    for(int i = 0; i < linhas; i++)
         delete[] matriz[i];
     delete[] matriz;
 
