@@ -17,7 +17,12 @@ void troca(Ponto *p1, Ponto *p2) {
 }
 
 int main() {
-    Ponto a{2, 4}, b{4, 5};
+    Ponto a, b;
+    std::cout << "Digite as coordenadas de a{x, y}" << std::endl;
+    std::cin >> a.x >> a.y;
+
+    std::cout << "Digite as coordenadas de b{x, y}" << std::endl;
+    std::cin >> b.x >> b.y;
 
     troca(&a, &b);
     std::cout << "ponto A1: " << " " << a.x << " " << "ponto A2: " << " " << a.y << std::endl;
