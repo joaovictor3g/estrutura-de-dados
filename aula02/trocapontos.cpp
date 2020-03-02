@@ -1,7 +1,7 @@
 #include <iostream>
 
 struct Ponto {
-    int x, y;
+    float x, y;
 
 };
 
@@ -23,8 +23,8 @@ int main() {
     std::cout << "ponto A1: " << " " << a.x << " " << "ponto A2: " << " " << a.y << std::endl;
     std::cout << "ponto B1: " << " " << b.x << " " << "ponto B2: " << " " << b.y << std::endl;
 
-    dobraCoordenadas(&a);
-    std::cout << "ponto A1: " << " " << a.x << " " << "ponto A2: " << " " << a.y << std::endl;
+    dobraCoordenadas(&b);
+    std::cout << "ponto A1: " << " " << b.x << " " << "ponto A2: " << " " << b.y << std::endl;
     
 
     return 0;
