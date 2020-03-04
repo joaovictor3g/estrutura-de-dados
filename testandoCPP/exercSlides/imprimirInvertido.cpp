@@ -10,5 +10,6 @@ int main() {
     for(int j = n - 1; j >= 0; j--)      std::cout << *(vetor+j) << " ";
     std::cout << "\n";
 
+    delete[] vetor;
     return 0;
 }

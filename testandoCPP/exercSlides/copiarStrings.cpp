@@ -9,20 +9,17 @@ char *strcpy(char *destino, char *origem) {
 }
 
 int strcmp(char *str1, char *str2) {
-    int cont1{0}, cont2{0}, varRetorno = 0;
+    int cont1{0}, cont2{0};
 
     while(str1[cont1])  cont1++;
     while(str2[cont2])  cont2++;
 
     if(cont1 == cont2)  
-        varRetorno = 0;
+        return 0;
 
     else if(cont1 < cont2)  
-        varRetorno = -1;
-
-    else 
-        varRetorno = 1;
-    return varRetorno;
+        return -1;
+    return 1;
 }
 
 int main() {

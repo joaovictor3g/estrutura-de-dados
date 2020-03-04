@@ -14,7 +14,7 @@ void liberar(int *A);
 int  main() {
     int tamanho = 0;
     cin >> tamanho;
-    int *array = new int[tamanho];
+    int *array = new ( nothrow ) int[tamanho];
 
     preencheArray(array, tamanho);
     imprimeArray(array, tamanho);
@@ -45,4 +45,5 @@ void imprimeArray(int *A, int n) {
 
 void liberar(int *A) {
     delete[]  A;
+
 }
