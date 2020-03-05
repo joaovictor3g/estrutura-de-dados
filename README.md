@@ -3,6 +3,7 @@
 ## `Aulas`
 
 - [x] Revisão FUP
+- [ ] Recursão
 - [ ] Análise de complexidade
 - [ ] Listas Sequenciais
 - [ ] Listas Encadeadas
