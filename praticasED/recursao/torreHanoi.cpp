@@ -1,5 +1,16 @@
 #include <iostream>
 
+void moveTorre(int, char, char, char);
+
+void moveDisco(int, char, char);
+
+int main() {
+    moveTorre(7, 'A', 'C', 'B');
+
+
+    return 0;
+}
+
 void moveTorre(int n, char origem, char destino, char aux) {
     if(n == 1)
         moveDisco(n, origem, destino);
@@ -14,11 +25,4 @@ void moveTorre(int n, char origem, char destino, char aux) {
 
 void moveDisco(int disco, char origem, char destino) {
     std::cout << "\nMovimento: disco " << disco << " " << "de " << origem << " " << "---> " << destino << std::endl; 
-}
-
-int main() {
-    moveTorre(7, 'A', 'C', 'B');
-
-
-    return 0;
 }
