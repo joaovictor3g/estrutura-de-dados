@@ -1,7 +1,7 @@
 #include <iostream>
 
 void troca (int *i, int *j) {
-    int *temp = nullptr; //Ponteiro deve sempre ser iniciado com: NULL, nullptr, 0 ou um endereço de outa variavel.
+    int *temp; //Ponteiro deve sempre ser iniciado com: NULL, nullptr, 0 ou um endereço de outa variavel.
     *temp = *i;
     *i = *j;
     *j = *temp;
