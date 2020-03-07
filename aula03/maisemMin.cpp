@@ -32,9 +32,9 @@ int main() {
     else {
         fillArray(array, 5);
         showArray(array, 5);
-
     }
-
+    delete array;
+    array = nullptr;
 
     return 0;
 }

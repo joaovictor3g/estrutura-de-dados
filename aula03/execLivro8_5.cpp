@@ -40,7 +40,5 @@ int evaluate(int x, int (*poly )( int )) {
 }
 
 int elevar(int y) {
-    
-
     return sqrt(y);
 }
