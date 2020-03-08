@@ -29,7 +29,8 @@ void preencherArray(int A[], int n) {
 }
 
 void mm(int A[], int n, int *min, int *max) {
-    *min = 10000000, *max = -100000000;
+    *min = A[0]; 
+    *max = *min;
 
     for(int i = 0; i < n; i++) {
         if(*min >= A[i])    *min = A[i];
