@@ -31,6 +31,7 @@
 *.out
 *.app
 
+# Executaveis sem extensao
 aula03/teste
 aula01/apagar.txt
 aula01/hell
