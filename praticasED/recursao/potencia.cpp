@@ -2,17 +2,17 @@
 
 using namespace std;
 
-int potencia(int n){
+int potencia(int base, int n){
     if(n == 0)  return 1;
     
-    return 2 * potencia(n-1);
+    return base * potencia(base, n-1);
 }
 
 int main(){
     int n = 0;
     cin >> n;
 
-    cout << potencia(n) << endl;
+    cout << potencia(7, n) << endl;
 
     return 0;
 }

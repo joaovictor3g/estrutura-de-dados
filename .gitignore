@@ -1,7 +1,6 @@
 .vscode
 # Prerequisites
 *.d
-*.txt
 # Compiled Object files
 *.slo
 *.lo
@@ -31,3 +30,29 @@
 *.exe
 *.out
 *.app
+
+aula03/teste
+aula01/apagar.txt
+aula01/hell
+aula02/troca
+aula03/aloc
+aula03/exec
+aula03/exec8
+aula03/exec8_5
+aula03/mm
+aula03/joguinho/race
+aula03/joguinho/safe.txt
+praticasED/argumentos/loop
+praticasED/bubblesort/newb
+praticasED/jogo/craps
+praticasED/recursao/any
+praticasED/recursao/hanoi
+praticasED/recursao/pot
+testandoCPP/dadola
+testandoCPP/matriz
+testandoCPP/str
+testandoCPP/switch
+testandoCPP/type
+testandoCPP/varG
+testandoCPP/exercSlides/strcpy
+testandoCPP/exercSlides/troca
