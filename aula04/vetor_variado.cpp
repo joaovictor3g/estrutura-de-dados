@@ -13,12 +13,15 @@ int main() {
         cin >> tamanho;
         for(int j = 0; j < tamanho; j++) {
             nome[j] = new char[tamanho];
-            aux[j] = new char[tamanho];
             cin >> nome[i][j];
-            aux[i][j] = nome[i][j];
             
+            aux[j] = new char[tamanho];
+            aux[i][j] = nome[i][j];
+            delete[] nome[i];
+
         }
-        delete[] nome[i];
+        delete[] nome;
+        
     }
 
     for(int i = 0; i < qtd; i++) 
