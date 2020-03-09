@@ -47,6 +47,7 @@ void max(int **matriz, int n, int *k, int *l, int *c) {
 
 int main() {
     int tamanho = 0, maior = 0;
+    cout << "Digite a ordem da matriz: ";
     cin >> tamanho;
     //Alocando matriz e vetores dinamicamente
     int **matriz = new int*[tamanho];
