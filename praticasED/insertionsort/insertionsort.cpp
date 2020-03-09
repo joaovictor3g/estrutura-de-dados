@@ -19,12 +19,12 @@ int main() {
     int *vetor;
 
     cin >> tamanho;
-    vetor = (int *) malloc (tamanho * sizeof(int));
+    vetor = new int[tamanho];
 
     for(int i = 0; i < tamanho; i++)    cin >> vetor[i];
 
     insertionSort(vetor, tamanho);
-    free(vetor);
+    delete[] vetor;
 
     return 0;
 }
