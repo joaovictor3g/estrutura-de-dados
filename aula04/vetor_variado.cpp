@@ -11,18 +11,17 @@ int main() {
     
     for(int i = 0; i < qtd; i++) {
         cin >> tamanho;
-        for(int j = 0; j < tamanho; j++) {
-            nome[j] = new char[tamanho];
-            cin >> nome[i][j];
-            
-            aux[j] = new char[tamanho];
-            aux[i][j] = nome[i][j];
-            delete[] nome[i];
-
+        nome[i] = new char[tamanho];
+        for(int j = 0; j <= tamanho; j++) {
+            for(int k = 0; k <= tamanho; k++) {
+                cin >> nome[j][k];
+                aux[j][k] = nome[j][k];
+            }
+                
         }
-        delete[] nome;
-        
+        delete[] nome[i];
     }
+    delete[] nome;
 
     for(int i = 0; i < qtd; i++) 
         for(int j = 0; j < qtd; j++)
