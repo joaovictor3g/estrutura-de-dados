@@ -1,1 +1,0 @@
-Ponteiro deve sempre ser iniciado com: NULL, nullptr, 0 ou um endereço de outa variavel.
