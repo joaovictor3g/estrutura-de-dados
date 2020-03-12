@@ -1,0 +1,2 @@
+Como cada int tem 8 bytes, quando se tem a expressão (v + 3), ele soma ao endereço do v[0] + 3 * 8.
+Ou seja, o resultado é 55000 + 3 * 8 = 55024. 
