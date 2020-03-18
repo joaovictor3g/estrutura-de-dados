@@ -3,15 +3,15 @@
 using namespace std;
 
 int menor_elemento(int *vetor, int size) {
-    if(size == 0)
-        return 0;
+    if(size == 0)   return 0;
+    
     if(size == 1)
         return vetor[size-1];
+
     int menor = menor_elemento(vetor, size-1);
     if(vetor[size-1] < menor)
         return vetor[size-1];
     return menor;
-
 }
 
 int main() {

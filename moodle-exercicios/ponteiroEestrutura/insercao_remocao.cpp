@@ -24,6 +24,9 @@ aluno le_aluno() {
 aluno *insere_aluno(aluno *v, int *n, aluno novo) {
     v = (aluno *) realloc (v, (*n+1)*(sizeof(aluno)));
 
+    if(v == NULL)  
+        return 0;
+
     v[*n] = novo;
   
     return v;
@@ -35,7 +38,7 @@ aluno *remove_aluno(aluno *v, int *n, int matricula) {
             v[i] = v[*n-1];
 
             v = (aluno *) realloc (v, (*n-1)*sizeof(aluno));
-            if(v == nullptr)
+            if(v == NULL)
                 return 0;
             
         }
