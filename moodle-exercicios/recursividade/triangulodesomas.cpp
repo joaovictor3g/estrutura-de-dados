@@ -20,6 +20,7 @@ void triangulo_de_somas(int *vetor, int size) {
     int novo_vet[size];
     for(int i = 0; i < size - 1; i++)
         novo_vet[i] = vetor[i] + vetor[i+1];
+        
     triangulo_de_somas(novo_vet, size - 1);
     print_vet(novo_vet, size);
     

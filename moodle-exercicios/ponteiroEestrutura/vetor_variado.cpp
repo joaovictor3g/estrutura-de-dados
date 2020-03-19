@@ -14,6 +14,7 @@ void ordenar(char **mat, int indice) {
         imprimir(mat, indice);
         return;
     }
+    //Ordenando a matriz em ordem alfabetica
     bool ordenado = false;
     while(!ordenado) {
         ordenado = true;
@@ -33,6 +34,7 @@ void preencher(char **matriz, int qtd_palavras, int indice) {
     int palavra = 0;
     cin >> palavra;
 
+    //Alocando as colunas da matriz
     matriz[indice] = new (nothrow) char[palavra];
 
     if(matriz[indice] == nullptr) {
@@ -66,7 +68,7 @@ int main() {
         cout << "Matriz não alocada" << endl;
         exit(1);
     }
-
+    //Chamando a funcao preencher qtd_palavras vezes.
     for(int i = 0; i < qtd_palavras; i++)
         preencher(matriz, qtd_palavras, i);
     
