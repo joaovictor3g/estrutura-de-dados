@@ -20,7 +20,7 @@
     // Ou seja, preenche o campo 'media' de cada aluno com a média das 3 notas do aluno.
     void calcula_media_turma(aluno turma[], int n) {    
         for(int i = 0; i < n; i++)
-            calcula_media(turma + i);
+            calcula_media(&turma[i]);
             
     }
 
