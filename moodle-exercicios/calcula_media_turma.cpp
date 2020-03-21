@@ -23,7 +23,7 @@
             calcula_media(&turma[i]);
             
     }
-
+            
     int main() {
         int n, i, j;
         

@@ -8,7 +8,7 @@ int mult_russa(int num1, int num2) {
     
     if(num1 % 2 == 0)
         return mult_russa(num1/2, num2*2);
-    num1--;
+    num1--; 
     return mult_russa(num1/2, num2*2) + num2;
     
 }

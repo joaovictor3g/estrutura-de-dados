@@ -22,14 +22,15 @@ aluno le_aluno() {
 }
 
 aluno *insere_aluno(aluno *v, int *n, aluno novo) {
-    v = (aluno *) realloc (v, (*n+1)*(sizeof(aluno)));
+    aluno *aux = new (nothrow) aluno[*n+1];
+    for(int i = 0; i < *n; i++)
+        aux[i] = v[i];
+    
+    aux[*n] = novo;
+    *n = *n+1;
+    delete[] v;
 
-    if(v == NULL)  
-        return 0;
-
-    v[*n] = novo;
-  
-    return v;
+   return aux;   
 }
 
 aluno *remove_aluno(aluno *v, int *n, int matricula) {
@@ -37,9 +38,11 @@ aluno *remove_aluno(aluno *v, int *n, int matricula) {
         if(v[i].matricula == matricula) {
             v[i] = v[*n-1];
 
-            v = (aluno *) realloc (v, (*n-1)*sizeof(aluno));
-            if(v == NULL)
-                return 0;
+            aluno *aux = new (nothrow) aluno[*n-1];
+            for(int j = 0; j < *n-1; j++)
+                aux[j] = v[j];
+            delete[] v;
+            return aux;
             
         }
     }
@@ -59,13 +62,13 @@ int main() {
         if (oper == 'i') {
             aluno a = le_aluno();
             v = insere_aluno(v, &n, a);
-            n++;
+        
 
         } else if(oper == 'r'){
             int mat;
             cin >> mat;
             v = remove_aluno(v, &n, mat);
-            n--;
+        
         }
     }    
 
