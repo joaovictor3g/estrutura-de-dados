@@ -4,31 +4,34 @@ using namespace std;
 
 int menor=0;
 
-int max_min(int *vetor, int size) {
+int max_max(int *vetor, int size) {
     if(size == 0) 
         return 0;
 
-    int maior = max_min(vetor, size-1);
+    int maior = max_max(vetor, size-1);
 
     if(maior < vetor[size-1]) {
-        menor = maior;
         return vetor[size-1];
     
     }else {
-        menor = vetor[size-1]; 
         return maior;
     
     }
-
 }
-/*
-    -1
-    2
-    4
-    6
-    5
 
-*/
+int min_min(int *vetor, int size) {
+    if(size == 0) 
+        return 0;
+
+    int menor = min_min(vetor, size-1);
+
+    if(menor > vetor[size-1]) 
+        return vetor[size-1];
+    
+    else    return menor;
+    
+}
+
 int main() {
     int size = 0;
     cin >> size;
@@ -43,7 +46,7 @@ int main() {
         cin >> vetor[i];
 
 
-    cout << max_min(vetor, size) << " " <<  menor << endl;
+    cout << max_max(vetor, size) - min_min(vetor, size)<< endl;
 
 
     return 0;

@@ -7,7 +7,7 @@ int verificar_se_contem(int *array, int size, int elemento) {
         return 0;
     if(array[size-1] == elemento)
         return 1;
-    verificar_se_contem(array, size-1, elemento);
+    return verificar_se_contem(array, size-1, elemento);
 }
 
 int main() {

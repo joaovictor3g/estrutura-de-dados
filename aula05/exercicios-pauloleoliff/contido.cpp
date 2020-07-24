@@ -25,6 +25,7 @@ int main() {
     int *b = new (nothrow) int[n];
     for(int i = 0; i < n; i++)
         cin >> b[i];
+        
     if(buscaSublista(a, k, b, n) == k) 
         cout << "Está contido" << endl;
     else 

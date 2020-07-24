@@ -14,11 +14,14 @@ int coeficiente_binomial(int n, int k) {
     //else return n;
 }
 /*
-    10, 4
-    coef_bin(10, 4) = 10 * coef_bin(9, 3)
-    coef_bin(9, 3) = 9 * coef_bin(8, 2)
-    coef_bin(8, 2) = 8 * coef_bin(7, 1)
-
+    6, 4
+    coef(6, 4) = coef(5, 3) + coef(5, 4)
+    coef(5, 3) = coef(4, 2) + coef(4, 3)
+    coef(4, 2) = coef(3, 1) + coef(3, 2)
+    coef(3, 1) = coef(2, 0) + coef(2, 1) = 1 + coef(2, 1)
+    coef(2, 1) = coef(1, 0) + coef(1, 1) = 1 + coef(1, 1)
+    coef(1, 1) = coef(0, 0) + coef(0, 1) = 1 + coef(0, 1)
+    coef(0, 1) = 
 */
 
 /*

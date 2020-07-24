@@ -10,7 +10,7 @@ int verify_if_exists(int *arr, int size, int x) {
     if(size == 0)
         return 0;
     if(arr[size-1]==x)
-        return verify_if_exists(arr, size-1, x)+1;
+        return 1;
     return verify_if_exists(arr, size-1, x);
 }
 
@@ -23,7 +23,7 @@ int main() {
         cin >> arr[i];
     cin >> x;
 
-    if(verify_if_exists(arr, size, x)>=1) {
+    if(verify_if_exists(arr, size, x)) {
         cout << "O número " << x << " pertence ao vetor [";
         for(int i = 0; i < size; i++) i == size-1 ? cout<< arr[i] : cout<< arr[i] << ", "; 
         cout << "]";
