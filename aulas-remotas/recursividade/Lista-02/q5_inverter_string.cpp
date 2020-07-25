@@ -18,5 +18,7 @@ int main() {
         cin >> letter[i];
     invert_string(letter, size);
 
+    delete[] letter;
+
     return 0;
 }

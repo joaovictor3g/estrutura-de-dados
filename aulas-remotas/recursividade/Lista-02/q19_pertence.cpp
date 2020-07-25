@@ -32,7 +32,7 @@ int main() {
         for(int i = 0; i < size; i++) i == size-1 ? cout<< arr[i] : cout<< arr[i] << ", ";  
         cout << "]";
     }
-
+    delete[] arr;
 
     return 0;
 }

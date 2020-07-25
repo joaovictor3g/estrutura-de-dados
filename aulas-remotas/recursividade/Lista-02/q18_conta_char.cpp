@@ -24,6 +24,7 @@ int main() {
     cin >> caracter;
 
     cout << count_char(arr_string, size, caracter) << endl;
+    delete[] arr_string;
 
     return 0;
 }
