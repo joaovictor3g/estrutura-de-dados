@@ -23,12 +23,15 @@ int main() {
     list.add(1);
     list.add(1);
     // cout << "Tamanho da lista: " << list.size() << endl;
-    
-    list.removeAll(1);
 
     list.replaceAt(489, 1);
 
     list.removeAt(4);
+
+    list.insertAt(908, 2);
+
+    list.removeAll(1);
+    cout << "Tamanho da lista: " << list.size() << endl;
 
     cout << "\nLista com 3, 5 e 10 e todos os 1s removidos, inserindo um valor diferente na posição 1: " << endl;
     list.print();

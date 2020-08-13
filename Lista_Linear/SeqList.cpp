@@ -84,23 +84,18 @@ void SeqList::removeAt(int k) {
 bool SeqList::insertAt(int x, int k) {
     if((k < 0 || k > size_vec) && size_vec > capacity_vec)
         return false;
-    
+    add(x);
     int aux = vec[k];
     vec[k] = x;
-    size_vec++;
-
-    while(k != size_vec-1) {
-        vec[k+1] = aux;
-        k++;
-    }
-        
-    
+    vec[size_vec-1] = aux;
 }
 
 void SeqList::removeAll(int elem) {
-    for(int i = 0; i < size(); i++) {
-        if(elem == vec[i])
+    for(int i = 0; i < size_vec; i++) {
+        if(elem == vec[i]) {
             remove(elem);
+            size_vec--;
+        }
     }      
 }
 
