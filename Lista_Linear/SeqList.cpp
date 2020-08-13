@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 #include "SeqList.h"
 
 using std::cout;
@@ -49,6 +50,8 @@ void SeqList::remove(int x) {
 }
 
 int SeqList::at(int k) {
+    if(k < 0) 
+        return INT_MIN;
     return vec[k];
 }
 
@@ -81,13 +84,21 @@ void SeqList::removeAt(int k) {
     size_vec--;
 }
 
+// 1, 2, 3, 4 eu quero colocar 5 na posicao 1 = [1, 5, 2, 3, 4]
 bool SeqList::insertAt(int x, int k) {
     if((k < 0 || k > size_vec) && size_vec > capacity_vec)
         return false;
-    add(x);
-    int aux = vec[k];
-    vec[k] = x;
-    vec[size_vec-1] = aux;
+    
+    size_vec++;
+    while(k < size_vec) {
+        int aux = vec[k];
+        vec[k] = x;
+        x = aux;
+        k++;
+         
+    }
+    return true;
+  
 }
 
 void SeqList::removeAll(int elem) {

@@ -13,8 +13,9 @@ int main() {
     for(i = 0; i < list.size(); i++) 
         cout << list.at(i) << " ";
     cout << endl;
+    cout << list.at(-1) << endl;
 
-    // cout << "Tamanho da lista: " << list.size() << endl;
+    cout << "Tamanho da lista: " << list.size() << endl;
     list.remove(5);
     list.remove(3);
     list.remove(10);
@@ -22,18 +23,19 @@ int main() {
 
     list.add(1);
     list.add(1);
-    // cout << "Tamanho da lista: " << list.size() << endl;
+    cout << "Tamanho da lista: " << list.size() << endl;
 
     list.replaceAt(489, 1);
 
     list.removeAt(4);
 
-    list.insertAt(908, 2);
+    if(list.insertAt(908, 3)) 
+        cout << "Número 908 inserido na posição 2" << endl;
 
     list.removeAll(1);
     cout << "Tamanho da lista: " << list.size() << endl;
 
-    cout << "\nLista com 3, 5 e 10 e todos os 1s removidos, inserindo um valor diferente na posição 1: " << endl;
+    cout << "\nLista: " << endl;
     list.print();
     cout << endl;
 

@@ -33,11 +33,11 @@ class SeqList {
         // Deve-se ter 0 ≤ k ≤ size vex-1; caso contrario, a remoção não é realizada.
         void removeAt(int k);
         // Adiciona o elemento x na posicao k
-        // (somente se 0 ≤ k ≤ size vec e size vec < max vec). Antes de fazer a
-        // inserc¸˜ao, todos os elementos da posic¸˜ao k em diante s˜ao deslocados uma
-        // posic¸˜ao para a direita.
+        // (somente se 0 ≤ k ≤ size vec e size_vec < max_vec). Antes de fazer a
+        // inserção, todos os elementos da posição k em diante são deslocados uma
+        // posição para a direita.
         bool insertAt(int x, int k);
-        // Remove todas as ocorrˆencias do elemento x
+        // Remove todas as ocorrências do elemento x
         // na lista.
         void removeAll(int x);
 };  
