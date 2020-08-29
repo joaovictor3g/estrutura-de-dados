@@ -19,7 +19,7 @@ void List::add(int x) {
     Node *novo = new Node;
     novo->value = x;
     novo->next = nullptr;
-    Node *aux = head; 
+        Node *aux = head; 
     while(aux->next != nullptr) 
         aux = aux->next;
     aux->next = novo;
@@ -109,7 +109,7 @@ void List::remove(int x) {
 
 void List::removeAll(int x) {
     Node *aux = head->next;
-    while(aux != nullptr) {
+    while(search(x) != nullptr) {
         remove(x);
         aux = aux->next;
     }
@@ -162,8 +162,90 @@ void List::insertAfter(int value, int index) {
 }
 
 List* List::copy() {
+    if(isEmpty()) {
+        cout << "Lista vazia" << endl;
+        return this;
+    }
+    Node *aux = head->next;
+    List* list = new List();
 
+    while(aux != nullptr) {
+        list->add(aux->value);
+        aux = aux->next;
+    } 
+    return list;
 }
+
+void List::copyArray(int v[], int size) {
+    clear();
+    for(int i = 0; i < size; i++)   add(v[i]);
+    
+}
+
+bool List::equal(List *list) {
+    if((size() != list->size()) || isEmpty() || list->isEmpty())
+        return false;
+
+    Node *aux = head->next;
+    Node *newNode = (list->head)->next;
+    int counter = 0;
+
+    while(aux != nullptr && newNode != nullptr) {
+        if(aux->value == newNode->value)
+            counter++;
+        aux = aux->next;
+        newNode = newNode->next;
+    }
+
+    return (counter == size());
+}
+
+void List::concatenate(List *list) {
+    if(isEmpty())
+        return;
+    Node *aux = head;
+
+    while(aux->next != nullptr) 
+        aux = aux->next;
+    
+    aux->next = (list->head)->next;
+    list = new List();
+}
+
+Node* List::ultimo() {
+    if(this->isEmpty()) 
+        return nullptr;
+
+    Node *aux = head->next;
+    Node *ultimoNo = nullptr;
+
+    while(aux != nullptr) {
+        if(aux->next == nullptr)
+            ultimoNo = aux;
+        aux = aux->next;
+    }
+    return ultimoNo;
+}
+
+Node* List::auxReverse(Node *node) {
+    if(node->next == nullptr)
+        return node;
+    Node *ant = node;
+
+    node = auxReverse(node->next);
+    
+    Node *no = this->ultimo();
+    no->next = ant;
+    ant->next = nullptr;
+    return node;
+}
+
+void List::reverse() {
+    if(isEmpty())   cout << "Lista Vazia" << endl;
+    else head->next = auxReverse(head->next);
+}
+
+
 
 
 

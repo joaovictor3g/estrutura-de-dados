@@ -12,6 +12,8 @@ class List {
       Node *clearRecursive(Node *node);
       void printRecursive(Node *node);
       void printRecursiveReverso(Node *node);
+      Node* auxReverse(Node* no);
+      Node* ultimo();
    public:
       List(); // Construtor
       ~List(); // Destrutor: libera memoria alocada
@@ -26,6 +28,11 @@ class List {
       void clear(); // deixa a lista vazia
       void insertAfter( int x, int k ); //Insere um novo nó com valor x após o k-ésimo nó da lista. Deve-se ter 0 ≤ k ≤ size() para que a inserção seja realizada; caso contrário, não sera realizada.
       List *copy(); // Retorna um ponteiro para uma cópia desta lista.
+      void copyArray( int v[], int n ); //Copia os elementos do array v para a lista. O array tem n elementos. Todos os elementos anteriores da lista são apagados.
+      bool equal( List *lst ); //Determina se a lista lst, passada por parâmetro, é igual à lista em questão. Duas listas são iguais se elas tem o mesmo tamanho e o valor do k-ésimo elemento da primeira lista é igual ao k-ésimo valor da segunda lista.
+      void concatenate(List *list);
+      void reverse(); // Inverte os nós
+ 
 };
 
 #endif
