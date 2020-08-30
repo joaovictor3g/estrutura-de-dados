@@ -16,6 +16,8 @@ public:
     void addBack(int value);
     void print();
     void printReverse();
+    void remove(int value);
+    void removeAll(int value);
 };
 
 #endif

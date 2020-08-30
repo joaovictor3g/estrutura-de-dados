@@ -61,6 +61,53 @@ void List::print() {
     }
     std::cout << "]" << std::endl; 
 }
+ 
+Node* List::search(int value) {
+    if(begin == nullptr)
+        return nullptr;
+
+    Node *aux = begin;
+    while(aux != nullptr) {
+        if(aux->value == value) 
+            return aux;
+        aux = aux->next;
+    }
+    return nullptr;
+}
+
+void List::remove(int value) {
+    Node *noRem = search(value);
+    if(noRem == nullptr) {
+        std::cout << "Não foi possível remover\n";  
+    }else if(noRem->ant == nullptr){
+        Node *aux = noRem;
+        if(noRem->next == nullptr) {
+            delete noRem;
+            begin = nullptr;
+            end = nullptr;
+            return;
+        }
+        begin = noRem->next;
+        (aux->next)->ant = nullptr;
+        delete noRem;
+
+    }else if(noRem->next == nullptr) {
+        Node *aux = noRem->ant;
+        end = noRem->ant;
+        aux->next = nullptr;
+        delete noRem;
+
+    }else{
+        Node *aux = noRem->ant;
+        aux->next = noRem->next;
+        (noRem->next)->ant = aux;
+        delete noRem;
+    }
+}
+
+void List::removeAll(int value) {
+    while(search(value) != nullptr) remove(value);
+}
 
 void List::printReverse() {
     Node *aux = end;
