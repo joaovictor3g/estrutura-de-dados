@@ -14,6 +14,8 @@ int main() {
     list->remove(90);
     list->removeAll(87);
 
+    list->clear();
+
     list->print();
     list->printReverse();
 

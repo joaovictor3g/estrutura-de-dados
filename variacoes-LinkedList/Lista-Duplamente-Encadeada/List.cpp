@@ -119,3 +119,21 @@ void List::printReverse() {
     }
     std::cout << "]" << std::endl;
 }
+
+void List::clear() {
+    if(begin == nullptr)
+        return;
+    Node *aux = begin;
+    while(aux != nullptr) {
+        Node *noRem = aux;
+        std::cout << "Removendo: " << noRem->value << "\n";
+        delete noRem;
+        aux = aux->next;
+    }
+    begin = nullptr;
+    end = nullptr;
+}
+
+List::~List() {
+    clear();
+}

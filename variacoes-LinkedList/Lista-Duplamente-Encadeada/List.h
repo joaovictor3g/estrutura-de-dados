@@ -18,6 +18,7 @@ public:
     void printReverse();
     void remove(int value);
     void removeAll(int value);
+    void clear();
 };
 
 #endif
