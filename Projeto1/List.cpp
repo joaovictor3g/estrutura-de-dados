@@ -86,5 +86,16 @@ void List::print() {
 }
 
 List::~List() {
-
+    if(head == head->next) {
+        std::cout << "Sem nós para remover" << std::endl;
+    }else{
+        Node *aux = head->next;
+        while(aux != head) {
+            std::cout << "Removendo: " << aux->key << std::endl;
+            popBack();
+            aux = aux->next;
+        }
+        head->next = head;
+        head->ant = head;
+    }
 }

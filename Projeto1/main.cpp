@@ -12,6 +12,7 @@ int main() {
     // std::cout << "Removendo: " << list->popBack() << std::endl;
     // std::cout << "Removendo: " << list->popBack() << std::endl;
     list->auxRemoveNode();
+
     list->print();
 
 
