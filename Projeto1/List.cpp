@@ -28,7 +28,7 @@ void List::pushBack(int key) {
 }
 
 int List::popBack() {
-    if(head == head->next) // Lista vazia
+    if(isEmpty()) // Lista vazia
         return INT_MIN; // retorno o menor inteiro
 
     Node *aux = head->ant; // auxiliar: recebe endereço do último nó
@@ -46,20 +46,9 @@ void List::auxRemoveNode() {
 }
 
 void List::removeNode(Node *p) {
-    if(head == head->next) {
+    if(isEmpty()) {
         std::cout << "Sem nós válidos para remoção" << std::endl;
     }else{
-        /*
-            Esse if serve no caso de o p apontar para
-            o último nó.
-        */
-        if(head->ant == p) { // Comparo se o último nó aponta para onde p aponta
-            Node *noRem = p; // Faço noRem receber este ponteiro
-            head->ant = noRem->ant; // Faço o anterior da cabeça apontar para o anterior de quem p aponta;
-            (noRem->ant)->next = head; // Faço o proximo do penúltimo apontar para head;
-            delete noRem; // delete o nó a qual p aponta
-            return;
-        }
         Node *aux = head->next; // Auxliar recebe o primeiro nó válido
         while(aux != head) { 
             if(p == aux) { // Comparo se p aponta para onde este auxiliar aponta
@@ -74,8 +63,41 @@ void List::removeNode(Node *p) {
     }
 }
 
+void List::remove(int key) {
+    if(isEmpty()) {
+        std::cout << "Impossível remover" << std::endl;
+    }else{
+        Node *aux = head->next; // Auxiliar recebe endereço do último nó
+        while(aux != head) { 
+            if(aux->key == key) { 
+                Node *noRem = aux; // Crio um ponteiro para armazenar o endereço do nó que quero remover
+                (noRem->ant)->next = noRem->next; // Proximo do no anterior aponta para o proximo do no que quero remover 
+                (noRem->next)->ant = noRem->ant; // O anterior do proximo aponta para o anterior do no que quero remover
+                delete noRem; // Finalmente removo o nó
+            }
+            aux = aux->next;
+        }
+    }
+}
+
+Node *List::searchNode(int key) {
+    if(isEmpty()) 
+        return head;
+    Node *aux = head->next;
+    while(aux != head) {
+        if(aux->key == key)
+            return aux;
+        aux = aux->next;
+    }
+    return head;
+}
+
+void List::removeAll(int key) {
+    while(searchNode(key) != head)  remove(key);
+}
+
 void List::print() {
-    if(head == head->next)
+    if(isEmpty())
         return;
     Node *aux = head->next;
     while(aux != head) {
@@ -85,15 +107,41 @@ void List::print() {
     std::cout << std::endl;
 }
 
+void List::printReverse() {
+    if(isEmpty()) {
+        std::cout << "Sem nós para imprimir" << std::endl;
+    }else{
+        Node *print = head->ant;
+        while(print != head) {
+            std::cout << print->key << " ";
+            print = print->ant;
+        }
+        std::cout << std::endl;
+    }
+}
+
+bool List::isEmpty() {
+    return (head == head->next) ; // Se a a cabeça aponta pra ela mesma, lista vazia
+}
+
+int List::size() {
+   return auxRecursiveSize(head->ant);
+}
+
+int List::auxRecursiveSize(Node *no) {
+    if(no == head) // caso base: nó igual a cabeça
+        return 0;  // Como a cabeça não é nó valido retorna 0
+    return auxRecursiveSize(no->ant)+1; // Retorna a função recursivamente passando o nó anterior
+}
+
 List::~List() {
-    if(head == head->next) {
+    if(isEmpty()) {
         std::cout << "Sem nós para remover" << std::endl;
     }else{
-        Node *aux = head->next;
+        Node *aux = head->ant;
         while(aux != head) {
-            std::cout << "Removendo: " << aux->key << std::endl;
-            popBack();
-            aux = aux->next;
+            std::cout << "Removendo: " << popBack() << std::endl;
+            aux = aux->ant;
         }
         head->next = head;
         head->ant = head;
