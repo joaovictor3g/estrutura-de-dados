@@ -35,7 +35,21 @@ public:
     void removeAll(int key);
     // Retorna true se lista vazia e false caso contrário
     bool isEmpty();
+    // Retorna tamanho da lista
     int size();
+    // Remove todos os nós da lista
+    void clear();
+    int removeNodeAt(int k);
+    // Concatena a lista passada como parâmetro com a lista atual
+    void concat(List *list);
+    // Retorna um ponteiro para uma cópia desta lista.
+    List *copy();
+    // Copia os elementos do array arr para a
+    // lista. O array arr tem n elementos. Todos os elementos anteriores da lista são
+    // mantidos e os elementos do array arr devem ser adicionados após os elementos
+    // originais.
+    void copyArray(int arr[], int size);
+    bool equal(List *list);
 
 };
 

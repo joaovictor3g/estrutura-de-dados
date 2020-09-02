@@ -134,16 +134,68 @@ int List::auxRecursiveSize(Node *no) {
     return auxRecursiveSize(no->ant)+1; // Retorna a função recursivamente passando o nó anterior
 }
 
-List::~List() {
+void List::concat(List* list) {
+    if(list->isEmpty()) // Verifico se a lista passada como parametro é vazia
+        return;
+    Node *aux = (list->head)->next; // Auxiliar recebe o primeiro nó válido da lista passado por parametro
+    while(aux != list->head) { 
+        pushBack(aux->key); // Adicionando os nós existentes na lista passada por parametro para a lista que referenciou esta função;
+        aux = aux->next;
+    }
+    list->clear(); // Liberando a lista passada por parâmetro
+}
+
+List *List::copy() {
+    List *list = new List();
+    if(isEmpty()) {
+        std::cout << "Lista a ser copiada está vazia" << std::endl;
+    }else{
+        Node *aux = head->next;
+        while(aux != head) {
+            list->pushBack(aux->key);
+            aux = aux->next;
+        }
+    }
+    return list;
+}
+
+void List::copyArray(int arr[], int size) {
+    for(int i = 0; i < size; i++)   pushBack(arr[i]);
+}
+
+bool List::equal(List *list) {
+    if(list->size() != this->size()) // Se as listas tiverem tamanhos diferentes ja é falso
+        return false;
+    if(list->isEmpty() || this->isEmpty()) // Se as listas forem vazias já é falso
+        return false;
+
+    Node *aux = head->next; // Auxiliar 1 recebe o primeiro nó válido
+    Node *aux2 = (list->head)->next; // Auxiliar 2 recebe o primeiro nó válido da lista passada por parametro
+    int counter = 0; // Contador 
+
+    while(aux != head) {
+        if(aux->key == aux2->key)  // Comparo as chaves das duas listas
+            counter++; // Conto se são iguais
+        aux = aux->next; 
+        aux2 = aux2->next;
+    }
+    return (counter == this->size()); // se o contador é igual ao tamanho da lista, true se não false
+}
+
+void List::clear() {
     if(isEmpty()) {
         std::cout << "Sem nós para remover" << std::endl;
     }else{
-        Node *aux = head->ant;
+        Node *aux = head->ant; // Crio um ponteiro para um nó que aponta para o último nó
         while(aux != head) {
-            std::cout << "Removendo: " << popBack() << std::endl;
-            aux = aux->ant;
+            std::cout << "Removendo: " << popBack() << std::endl; // Chamo a função que remove o último nó
+            aux = aux->ant; // Enquanto houver nó válido
         }
-        head->next = head;
-        head->ant = head;
+        head->next = head; // Faço o proximo da cabeça apontar para ele mesmo
+        head->ant = head; // Faço o anterior da cabeça apontar para ele mesmo
     }
+}
+
+List::~List() {
+    clear();
 }
