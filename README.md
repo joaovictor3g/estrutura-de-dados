@@ -19,7 +19,7 @@
 
 ## `Trabalhos`
 
-- [ ] [T1](Projeto1)
+- [ ] [Trabalho 1](Projeto1)
 - [ ] T2
 - [ ] T3
 
