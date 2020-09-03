@@ -196,7 +196,7 @@ List *List::copy() {
             aux = aux->next;
         }
     }
-    return list;
+    return list; // Retorno a nova lista criada, já preenchido
 }
 
 void List::copyArray(int arr[], int size) {
@@ -230,6 +230,22 @@ void List::mergeLists(List *list) {
         Node *aux2 = (list->head)->next;
         
     }
+}
+
+List *List::separate(int key) {
+    List *list = new List();
+    Node *nodeToSeparate = searchNode(key);
+    if(nodeToSeparate->next == head) {
+        (list->head)->next = head->next;
+        (list->head)->ant = nodeToSeparate->next;
+    }else{
+        Node *no = nodeToSeparate->next;
+        while(no != head) {
+            list->pushBack(no->key);
+            no = no->next;
+        }
+    }
+    return list;
 }
 
 void List::clear() {

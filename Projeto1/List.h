@@ -1,3 +1,8 @@
+/*
+    Nome: João Victor Dias Barros   Matrícula: 474110
+    Disciplina: Estrutura de Dados
+*/
+
 #ifndef CIRC_LIST_DOUBLE_LINKED
 #define CIRC_LIST_DOUBLE_LINKED
 
@@ -40,7 +45,9 @@ public:
     int size();
     // Remove todos os nós da lista
     void clear();
-    // A implementar /////////
+    //     Remove o k-ésimo nó da lista encadeada e retorna
+    // o seu valor. Caso o k-ésimo nó não exista, o programa retorna o valor especial
+    // INT MIN definido no cabeçalho climits.
     int removeNodeAt(int k);
     // Concatena a lista passada como parâmetro com a lista atual
     void concat(List *list);
