@@ -16,8 +16,11 @@ int main() {
     // int vetor[4]{987, 87, 767, 75};
     // list->copyArray(vetor, 4);
 
-    list->insertAfter(6, 1);
+    // list->insertAfter(6, 1);
+    std::cout << list->removeNodeAt(3) << std::endl;
+    std::cout << list->removeNodeAt(1) << std::endl;
     list->print();
+    list->printReverse();
 
     List *newList = new List();
     // newList->pushBack(10);

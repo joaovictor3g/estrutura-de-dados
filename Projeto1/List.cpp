@@ -116,6 +116,22 @@ Node *List::searchNode(int key) {
     return head;
 }
 
+int List::removeNodeAt(int index) {
+    if(index < 0 || index > this->size()) // Se o index não estiver neste intervalo retorno o menor inteiro
+        return INT_MIN;
+    else{
+        int counter = 0; // Crio um contador
+        Node *aux = head->next; // Auxiliar aponta para o primeiro nó válido
+        while(aux != head && counter < index) { 
+            aux = aux->next;
+            counter++;
+        }
+        int key = aux->key; // key variavel que recebe o valor do meu nó antes de removê-lo
+        removeNode(aux); // removo nó para o qual o auxiliar está apontando
+        return key; // retorno a chave
+    }
+}
+
 void List::removeAll(int key) {
     while(searchNode(key) != head)  remove(key);
 }
