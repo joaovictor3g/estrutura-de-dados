@@ -26,6 +26,7 @@ public:
     int popBack();
     //Insere um novo nó com valor key após o k-ésimo nó da lista.
     void insertAfter(int key, int k);
+    // Função auxiliar para testar a função de removeNode
     void auxRemoveNode();
     // Remove da lista a primeira ocorrência do inteiro key
     void remove(int key);
@@ -39,6 +40,7 @@ public:
     int size();
     // Remove todos os nós da lista
     void clear();
+    // A implementar /////////
     int removeNodeAt(int k);
     // Concatena a lista passada como parâmetro com a lista atual
     void concat(List *list);
@@ -49,7 +51,21 @@ public:
     // mantidos e os elementos do array arr devem ser adicionados após os elementos
     // originais.
     void copyArray(int arr[], int size);
+    // Determina se a lista passada por parâmetro é igual à
+    // lista em questão. Duas listas são iguais se elas possuem o mesmo tamanho e o valor
+    // do k-ésimo elemento da primeira lista é igual ao k-ésimo elemento da segunda lista.
     bool equal(List *list);
+    //     Recebe como parâmetro um valor inteiro n e divide a
+    // lista em duas, de forma à segunda lista começar no primeiro nó logo após a primeira
+    // ocorrência de n na lista original. A função deve retornar um ponteiro para a segunda
+    // subdivisão da lista original, enquanto a cabeça da lista original deve continuar
+    // apontando para o primeiro elemento da primeira lista, caso ele não tenha sido o
+    // primeiro a ter valor n.
+    List *separate(int key);
+    //     Recebe uma List como parâmetro e constrói
+    // uma nova lista com a intercalação dos nós da lista original com os nós da lista
+    // passada por parâmetro. Ao final desta operação, list2 deve ficar vazia.
+    void mergeLists(List *list);
 
 };
 

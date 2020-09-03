@@ -41,6 +41,30 @@ int List::popBack() {
     return lastKey;
 }
 
+void List::insertAfter(int key, int index) {
+    if(index < 0) {
+        std::cout << "Indice inválido" << std::endl;
+        return;
+    }
+    Node *no = new Node; // Crio um novo ponteiro para nó
+    no->key = key; // Atribuo a key passada por parametro ao meu novo nó
+
+    Node *aux = head->next; // Faço nó apontar para cabeça
+    int counter = 0; // Contador
+    while(aux != head && counter < index) { // Percorro meus nós até counter ser igual a index
+        aux = aux->next; // Incremento auxiliar
+        counter++; // Incremento contador
+    }
+    /*
+        Este while vai me dar um aux apontando para um nó na posição do index;
+    */
+    Node *aux2 = aux->next; // Crio um pontairo para nó que aponta para onde o proximo do auxiliar aponta
+    aux->next = no; // Faço proximo do auxiliar apontar para o novo nó
+    no->ant = aux; // Faço o anterior do novo nó apontar para auxiliar
+    no->next = aux2; // Faço o proximo do novo nó apontar para Auxiliar 2 que tem o endereco do nó que eu guardei
+    aux2->ant = no; // Faço o anterior deste apontar para meu novo nó
+}
+
 void List::auxRemoveNode() {
     removeNode((head->next)->next);
 }
@@ -180,6 +204,16 @@ bool List::equal(List *list) {
         aux2 = aux2->next;
     }
     return (counter == this->size()); // se o contador é igual ao tamanho da lista, true se não false
+}
+
+void List::mergeLists(List *list) {
+    if(this->isEmpty() || list->isEmpty()) {
+        std::cout << "Lista vazia" << std::endl;
+    }else{
+        Node *aux = head->next;
+        Node *aux2 = (list->head)->next;
+        
+    }
 }
 
 void List::clear() {
