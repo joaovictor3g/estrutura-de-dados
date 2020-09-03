@@ -3,12 +3,12 @@
 ## `Aulas`
 
 - [x] Revisão FUP
-- [ ] Recursão
-- [ ] Análise de complexidade
-- [ ] Listas Sequenciais
-- [ ] Listas Encadeadas
-- [ ] Pilhas, filas
-- [ ] Árvores binárias: representaçaõ e busca
+- [x] Recursão
+- [x] Análise de complexidade
+- [x] Listas Sequenciais
+- [x] Listas Encadeadas
+- [x] Pilhas, filas
+- [ ] Árvores binárias: representação e busca
 - [ ] Algoritmos de Ordenação
 
 ## `Provas`
@@ -19,7 +19,7 @@
 
 ## `Trabalhos`
 
-- [ ] T1
+- [ ] [T1](Projeto1)
 - [ ] T2
 - [ ] T3
 
