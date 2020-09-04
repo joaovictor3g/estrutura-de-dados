@@ -229,6 +229,14 @@ void List::mergeLists(List *list) {
         Node *aux = head->next;
         Node *aux2 = (list->head)->next;
         
+        while(aux != head) {
+            Node *aux3 = aux;
+            (aux3->ant)->next = aux2;
+            aux2->ant = aux3->ant;
+
+            aux = aux->next;
+        }
+        
     }
 }
 

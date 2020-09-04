@@ -22,8 +22,10 @@ int main() {
     // list->print();
     // list->printReverse();
 
-    List *newList = list->separate(90);
-    newList->print();
+    List *newList = list->copy();
+    list->mergeLists(newList);
+    list->print();
+    // newList->print();
     // newList->pushBack(10);
     // newList->pushBack(11);
     // newList->pushBack(12);
