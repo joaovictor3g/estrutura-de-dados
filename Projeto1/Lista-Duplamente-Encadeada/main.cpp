@@ -1,74 +1,50 @@
 #include <iostream>
 #include "List.h"
 
+using namespace std;
+
+void menu(List *list) {
+    int option = 0;
+    cout << "Menu de opções " << endl;
+    cout << "1 - Adicionar" << endl;
+    cout << "2 - Copiar" << endl;
+    cout << "3 - Remover" << endl;
+    cout << "4 - Imprimir Lista" << endl;
+    cin >> option;
+
+    int value = 0;
+    // while(option != 0) {
+        switch(option) {
+            case 1: {
+                cout << "Digite o valor: " << endl;
+                cin >> value;
+                list->pushBack(value);
+                menu(list);
+                break;
+            }
+            case 2: {
+                List *list2 = new List();
+                list2 = list->copy();
+                cout << "Lista copiada" << endl;
+                menu(list);
+                break;
+            }
+            case 3: {
+                break;
+            }
+            case 4: {
+                list->print();
+                break;
+            
+            }
+        }
+}
+
 int main() {
     List *list = new List();
-    list->pushBack(1);
-    list->pushBack(2);
-    list->pushBack(3);
-    list->pushBack(4);
-    list->pushBack(78);
-    list->pushBack(78);
-    list->pushBack(78);
-    list->pushBack(78);
-    list->pushBack(90);
 
-    // int vetor[4]{987, 87, 767, 75};
-    // list->copyArray(vetor, 4);
-
-    // list->insertAfter(6, 1);
-    // std::cout << list->removeNodeAt(3) << std::endl;
-    // std::cout << list->removeNodeAt(1) << std::endl;
-    // list->print();
-    // list->printReverse();
-
-    List *newList = list->copy();
-    list->mergeLists(newList);
-    list->print();
-    // newList->print();
-    // newList->pushBack(10);
-    // newList->pushBack(11);
-    // newList->pushBack(12);
-    // newList->pushBack(13);
-    // newList->pushBack(14);
-    // list->concat(newList);
-
-    // if(list->equal(newList))
-    //     std::cout << "Listas iguais" << std::endl;
-    // else std::cout << "Listas diferentes" << std::endl;
-
-    // list->print();
-    // list->printReverse();
-    // std::cout << "Tamanho da lista: " << list->size() << "\n";
-
-    List *list2 = new List();
-    // list2 = list->copy();
-    // list2->print();
-    // std::cout << std::endl;
-    // std::cout << std::endl;
-    // std::cout << std::endl;
-    // std::cout << "Removendo: " << list->popBack() << std::endl;
-    // std::cout << "Removendo: " << list->popBack() << std::endl;
-    // std::cout << "Removendo: " << list->popBack() << std::endl;
-    // std::cout << "Removendo: " << list->popBack() << std::endl;
-    // list->auxRemoveNode();
-    // list->remove(4);
-    //list->removeAll(78);
-    //
-
-    // List *list3 = new List();
-    // list3->pushBack(1);
-    // list3->pushBack(2);
-    // List *list4 = new List();
-    // list4->pushBack(3);
-    // list4->pushBack(4);
-
-    // list3->mergeLists(list4);
-    // list3->print();
+    menu(list);
 
     delete list;
-    delete newList;
-    delete list2;
-
     return 0;
 }
