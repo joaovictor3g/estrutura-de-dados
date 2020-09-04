@@ -239,11 +239,11 @@ List *List::separate(int key) {
     if(this->isEmpty())  
         return list;
 
-    if((nodeToSeparate->next == head) && this->size() == 1) { // 
+    if((nodeToSeparate->next == head) && this->size() == 1) { // Verificação de apenas um nó válido 
         return list;
     
-    }else if(nodeToSeparate->next == head) {
-        Node *no = nodeToSeparate->next;
+    }else if(nodeToSeparate->next == head) { // Verificação se o proximo do nó buscado é o último nó
+        Node *no = nodeToSeparate->next; 
         while(no != nodeToSeparate) {
             if(no == head)
                 no = no->next;
