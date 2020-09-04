@@ -235,9 +235,22 @@ void List::mergeLists(List *list) {
 List *List::separate(int key) {
     List *list = new List();
     Node *nodeToSeparate = searchNode(key);
-    if(nodeToSeparate->next == head) {
-        (list->head)->next = head->next;
-        (list->head)->ant = nodeToSeparate->next;
+    
+    if(this->isEmpty())  
+        return list;
+
+    if((nodeToSeparate->next == head) && this->size() == 1) { // 
+        return list;
+    
+    }else if(nodeToSeparate->next == head) {
+        Node *no = nodeToSeparate->next;
+        while(no != nodeToSeparate) {
+            if(no == head)
+                no = no->next;
+            list->pushBack(no->key);
+            no = no->next;
+        }
+    
     }else{
         Node *no = nodeToSeparate->next;
         while(no != head) {

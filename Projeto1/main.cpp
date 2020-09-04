@@ -5,13 +5,13 @@ int main() {
     List *list = new List();
     list->pushBack(1);
     list->pushBack(2);
-    // list->pushBack(3);
-    // list->pushBack(4);
-    // list->pushBack(78);
-    // list->pushBack(78);
-    // list->pushBack(78);
-    // list->pushBack(78);
-    // list->pushBack(90);
+    list->pushBack(3);
+    list->pushBack(4);
+    list->pushBack(78);
+    list->pushBack(78);
+    list->pushBack(78);
+    list->pushBack(78);
+    list->pushBack(90);
 
     // int vetor[4]{987, 87, 767, 75};
     // list->copyArray(vetor, 4);
@@ -22,7 +22,7 @@ int main() {
     // list->print();
     // list->printReverse();
 
-    List *newList = list->separate(2);
+    List *newList = list->separate(90);
     newList->print();
     // newList->pushBack(10);
     // newList->pushBack(11);
