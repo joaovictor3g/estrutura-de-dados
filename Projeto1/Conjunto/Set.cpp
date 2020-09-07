@@ -13,7 +13,7 @@ Set::Set() {
 }
 
 // Adiciona elementos ao fim da lista
-void Set::add(int value) {
+void Set::insert(int value) {
     Node *novo = new Node; // Inicio un ponteiro para nó
     novo->value = value; // Atribuo um valor ao campo value
 
@@ -37,7 +37,7 @@ Set* Set::unionSet(Set *set1, Set *set2) {
 
     Node *aux = (set2->head)->next;
     while(aux != set2->head) {
-        set1->add(aux->value);
+        set1->insert(aux->value);
         aux = aux->next;
     }
 
@@ -50,19 +50,18 @@ Set *Set::intersectionSet(Set  *set1, Set *set2) {
 
     Set *newSet = new Set();
 
-    Node *aux1 = (set1->head)->next;
-    Node *aux2 = (set2->head)->next;
-
-    if(set1->size() >= set2->size()) {
+    Node *aux1 = (set1->head)->next; // Auxiliar 1 aponta para o primeiro nó válido do cojunto1.
+    Node *aux2 = (set2->head)->next; // Auxiliar 2 aponta para o primeiro nó válido do conjunto2.
+    if(set1->size() >= set2->size()) { 
         while(aux1 != set1->head) {
             if(set2->contains(aux1->value))
-                newSet->add(aux1->value);
+                newSet->insert(aux1->value);
             aux1 = aux1->next;
         }    
     }else{
         while(aux2 != set2->head) {
             if(set1->contains(aux2->value))
-                newSet->add(aux2->value);
+                newSet->insert(aux2->value);
             aux2 = aux2->next; 
         }
     }
@@ -78,23 +77,10 @@ Set *Set::diference(Set *set1, Set *set2) {
     Node *aux1 = (set1->head)->next;
     Node *aux2 = (set2->head)->next;
 
-    if(set1->size() >= set2->size()) {
-        while(aux1 != set1->head) {
-            if(!set2->contains(aux1->value))
-                newSet->add(aux1->value);
-            aux1 = aux1->next;
-        }    
-    }else{
-        while(aux2 != set2->head) {
-            if(!set2->contains(aux1->value)) {
-                newSet->add(aux2->value);
-               
-            }
-            aux1 = aux1->next;
-            if(aux1 == head) 
-                break;
-            aux2 = aux2->next; 
-        }
+    while(aux1 != head) {
+        if(!set2->contains(aux1->value))
+            newSet->insert(aux1->value);
+        aux1 = aux1->next;
     }
     return newSet;
 }
@@ -116,6 +102,10 @@ bool Set::contains(int value) {
     return (search(value) != head);
 }
 
+Set *Set::createEmptySet() {
+    return new Set();
+}
+
 int Set::size() {
     if(this->isEmptySet())
         return 0;
@@ -134,6 +124,37 @@ bool Set::isEmptySet() {
     return (head == head->next);
 }
 
+void Set::remove(int value) {
+    if(isEmptySet())
+        return;
+    Node *noRem = search(value);
+    
+    if(noRem == head)
+        return;
+    Node *aux = head;
+
+    while(aux->next != noRem) 
+        aux = aux->next;
+    aux->next = noRem->next;
+    delete noRem;
+}
+
+int Set::member(int value) {
+    return (contains(value)) ? 1 : 0;
+}
+
+void Set::clear() {
+    if(isEmptySet())
+        return;
+    Node *aux = head->next;
+    while(aux != head) {
+        Node *noRem = aux;
+        std::cout << "Removendo: " << aux->value << std::endl;
+        remove(noRem->value);
+        aux = aux->next;
+    }
+}
+
 void Set::print() {
     Node *aux = head->next;
     std::cout << "{ ";
@@ -144,4 +165,9 @@ void Set::print() {
         aux = aux->next;
     }
     std::cout << " }" << std::endl;
+}
+
+// Destrutor
+Set::~Set() {
+    clear();
 }

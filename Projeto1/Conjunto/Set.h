@@ -13,7 +13,7 @@ public:
     // Destrutor
     ~Set(); 
     // Adicionar valor
-    void add(int value);
+    void insert(int value);
     // recebe os conjuntos A e B como parâmetro e retorna o conjunto C= A ∪ B.
     Set* unionSet(Set *set1, Set *set2);
     // Imprime os elementos do conjunto
@@ -27,7 +27,15 @@ public:
     int size();
     // Verifica se o valor existe no conjunto.
     bool contains(int value);
+    // recebe os conjuntos A e B como parâmetro e retorna o conjunto
+    // C = A - B.
     Set* diference(Set *set1, Set *set2);
+    // recebe o conjunto A e um elemento y e remove y do conjunto A, isto
+    // é, A = A - y.
+    void remove(int value);
+    int member(int value);
+    Set* createEmptySet();
+    void clear();
 };
 
 #endif
