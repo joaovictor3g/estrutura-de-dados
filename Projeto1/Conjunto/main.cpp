@@ -16,7 +16,7 @@ int main() {
 
 
     Set *set3 = new Set();
-    set3 = set->intersectionSet(set, set2);
+    set3 = set->diference(set, set2);
 
     set3->print();
     return 0;

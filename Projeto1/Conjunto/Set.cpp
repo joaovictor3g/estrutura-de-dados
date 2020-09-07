@@ -14,12 +14,12 @@ Set::Set() {
 
 // Adiciona elementos ao fim da lista
 void Set::add(int value) {
-    Node *novo = new Node;
-    novo->value = value;
+    Node *novo = new Node; // Inicio un ponteiro para nó
+    novo->value = value; // Atribuo um valor ao campo value
 
-    if(head->next == head) {
-        head->next = novo;
-        novo->next = head;
+    if(head->next == head) { // Se nao existe no valido
+        head->next = novo; // O proximo da cabeça aponta para o novo nó
+        novo->next = head; // O proximo do novo nó aponta para cabeça
     }else{
         Node *aux = head;
         while(aux->next != head) 
@@ -69,6 +69,36 @@ Set *Set::intersectionSet(Set  *set1, Set *set2) {
     return newSet;
 }
 
+Set *Set::diference(Set *set1, Set *set2) {
+    if(set1->isEmptySet())  return set2;
+    if(set2->isEmptySet())  return set1;
+
+    Set *newSet = new Set();
+
+    Node *aux1 = (set1->head)->next;
+    Node *aux2 = (set2->head)->next;
+
+    if(set1->size() >= set2->size()) {
+        while(aux1 != set1->head) {
+            if(!set2->contains(aux1->value))
+                newSet->add(aux1->value);
+            aux1 = aux1->next;
+        }    
+    }else{
+        while(aux2 != set2->head) {
+            if(!set2->contains(aux1->value)) {
+                newSet->add(aux2->value);
+               
+            }
+            aux1 = aux1->next;
+            if(aux1 == head) 
+                break;
+            aux2 = aux2->next; 
+        }
+    }
+    return newSet;
+}
+
 Node *Set::search(int value) {
     if(isEmptySet())
         return head;
@@ -106,12 +136,12 @@ bool Set::isEmptySet() {
 
 void Set::print() {
     Node *aux = head->next;
-    std::cout << "{";
+    std::cout << "{ ";
     while(aux != head) {
         std::cout << aux->value;
         if(aux->next != head) 
             std::cout << ", ";  
         aux = aux->next;
     }
-    std::cout << "}" << std::endl;
+    std::cout << " }" << std::endl;
 }

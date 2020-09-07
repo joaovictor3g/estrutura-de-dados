@@ -25,7 +25,9 @@ public:
     bool isEmptySet();
     // Retotna tamanho do conjunto;
     int size();
+    // Verifica se o valor existe no conjunto.
     bool contains(int value);
+    Set* diference(Set *set1, Set *set2);
 };
 
 #endif
