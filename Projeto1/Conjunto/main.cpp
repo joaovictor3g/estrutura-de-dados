@@ -7,7 +7,17 @@ int main() {
     set->add(2);
     set->add(3);
 
-    set->print();
+    Set *set2 = new Set();
+    set2->add(2);
+    set2->add(3);
+    set2->add(4);
+    set2->add(5);
+    set2->add(6);
 
+
+    Set *set3 = new Set();
+    set3 = set->intersectionSet(set, set2);
+
+    set3->print();
     return 0;
 }
