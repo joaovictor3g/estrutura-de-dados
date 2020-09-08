@@ -41,7 +41,9 @@ public:
     int min(Set *a);
     // Retorna o maior valor do conjunto
     int max(Set *a);
+    // retorna true se os conjuntos A e B são iguais e false caso contrário.
     bool isEqual(Set *a, Set *b);
+    Set *simetricDiference(Set *a, Set *b);
     // Remove todos os nós
     void clear();
 };

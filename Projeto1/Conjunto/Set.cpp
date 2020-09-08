@@ -195,6 +195,23 @@ bool Set::isEqual(Set *a, Set *b) {
     return (counter == size());
 }
 
+Set *Set::simetricDiference(Set *set1, Set *set2) {
+    Node *aux1 = (set1->head)->next;
+    Node *aux2 = (set2->head)->next;
+
+    Set *intersection = intersectionSet(set1, set2);
+    Set *newSet = new Set();
+
+    while(aux1 != set1->head) {
+        if(!intersection->contains(aux1->value) && !intersection->contains(aux2->value)) {
+            newSet->insert(aux1->value);
+            newSet->insert(aux2->value);
+        }
+        aux1 = aux1->next;
+        aux2 = aux2->next;
+    } 
+}
+
 void Set::clear() {
     if(isEmptySet())
         return;
