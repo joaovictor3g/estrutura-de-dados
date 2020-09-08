@@ -18,14 +18,15 @@ int main() {
     set2->insert(4);
     set2->insert(5);
     set2->insert(6);
+    set2->insert(-1);
 
 
     Set *set3 = new Set();
-    set3 = set->diference(set, set2);
+    set3 = set->diference(set2, set);
     // set->remove(2);
     // set->remove(3);
     
-    // std::cout << set->member(1) << std::endl;
+    std::cout << set->min(set2) << std::endl;
     set3->print();
 
     delete set;

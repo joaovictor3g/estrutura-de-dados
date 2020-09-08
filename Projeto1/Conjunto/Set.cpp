@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 #include "Set.h"
 
 struct Node {
@@ -75,30 +76,31 @@ Set *Set::diference(Set *set1, Set *set2) {
     Set *newSet = new Set(); // Novo conjunto
 
     Node *aux1 = (set1->head)->next; 
-    Node *aux2 = (set2->head)->next;
 
-    // Necessário saber qual conjunto é maior
-    if(set1->size() >= set2->size()) { 
-        while(aux1 != set1->head) { 
-            if(!set2->contains(aux1->value))
-                newSet->insert(aux1->value);
-
-            if(!set1->contains(aux2->value) && (aux2 != set2->head))
-                newSet->insert(aux2->value);
-            aux1 = aux1->next; 
-            aux2 = aux2->next;
-        } 
-    }else{
-        while(aux2 != set2->head) {
-            if(!set2->contains(aux1->value) && (aux1 != set1->head))
-                newSet->insert(aux1->value);
-            if(!set1->contains(aux2->value))
-                newSet->insert(aux2->value);
-            aux1 = aux1->next; 
-            aux2 = aux2->next;
-        } 
-    }
+    while(aux1 != set1->head) { 
+        if(!set2->contains(aux1->value))
+            newSet->insert(aux1->value);
+        aux1 = aux1->next; 
+    
+    } 
+   
     return newSet;
+}
+
+int Set::min(Set *set) {
+    if(set->isEmptySet()) 
+        return INT_MIN;
+
+    Node *aux = (set->head)->next; // Inicio auxiliar apontando para primeiro no valido
+    int minInitialValue = aux->value; // Crio uma variavel para guardar o primeiro valor do conjunto 
+    
+    while(aux != set->head) {
+        if(minInitialValue >= aux->value)
+            minInitialValue = aux->value;
+        aux = aux->next;
+    }
+
+    return minInitialValue;
 }
 
 Node *Set::search(int value) {

@@ -33,8 +33,12 @@ public:
     // recebe o conjunto A e um elemento y e remove y do conjunto A, isto
     // é, A = A - y.
     void remove(int value);
+    // Retorna 1 se o o elemento passado por parâmetro pertence ao conjunto e 0 caso contrário
     int member(int value);
+    // cria um conjunto vazio
     Set* createEmptySet();
+    int min(Set *a);
+    // Remove todos os nós
     void clear();
 };
 
