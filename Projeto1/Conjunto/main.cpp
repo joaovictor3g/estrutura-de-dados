@@ -7,6 +7,10 @@ int main() {
     set->insert(2);
     set->insert(3);
     set->insert(7);
+    set->insert(1);
+    set->insert(2);
+    set->insert(3);
+    set->insert(7);
 
     Set *set2 = new Set();
     set2->insert(2);
@@ -17,12 +21,12 @@ int main() {
 
 
     Set *set3 = new Set();
-    // set3 = set->diference(set, set2);
-    set->remove(2);
-    set->remove(3);
+    set3 = set->diference(set, set2);
+    // set->remove(2);
+    // set->remove(3);
     
-    std::cout << set->member(1) << std::endl;
-    set->print();
+    // std::cout << set->member(1) << std::endl;
+    set3->print();
 
     delete set;
     delete set2;

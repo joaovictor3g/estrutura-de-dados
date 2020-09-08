@@ -72,15 +72,31 @@ Set *Set::diference(Set *set1, Set *set2) {
     if(set1->isEmptySet())  return set2;
     if(set2->isEmptySet())  return set1;
 
-    Set *newSet = new Set();
+    Set *newSet = new Set(); // Novo conjunto
 
-    Node *aux1 = (set1->head)->next;
+    Node *aux1 = (set1->head)->next; 
     Node *aux2 = (set2->head)->next;
 
-    while(aux1 != head) {
-        if(!set2->contains(aux1->value))
-            newSet->insert(aux1->value);
-        aux1 = aux1->next;
+    // Necessário saber qual conjunto é maior
+    if(set1->size() >= set2->size()) { 
+        while(aux1 != set1->head) { 
+            if(!set2->contains(aux1->value))
+                newSet->insert(aux1->value);
+
+            if(!set1->contains(aux2->value) && (aux2 != set2->head))
+                newSet->insert(aux2->value);
+            aux1 = aux1->next; 
+            aux2 = aux2->next;
+        } 
+    }else{
+        while(aux2 != set2->head) {
+            if(!set2->contains(aux1->value) && (aux1 != set1->head))
+                newSet->insert(aux1->value);
+            if(!set1->contains(aux2->value))
+                newSet->insert(aux2->value);
+            aux1 = aux1->next; 
+            aux2 = aux2->next;
+        } 
     }
     return newSet;
 }
