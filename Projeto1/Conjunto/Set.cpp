@@ -103,6 +103,22 @@ int Set::min(Set *set) {
     return minInitialValue;
 }
 
+int Set::max(Set *set) {
+    if(set->isEmptySet()) 
+        return INT_MIN;
+
+    Node *aux = (set->head)->next; // Inicio auxiliar apontando para primeiro no valido
+    int maxInitialValue = aux->value; // Crio uma variavel para guardar o primeiro valor do conjunto 
+    
+    while(aux != set->head) {
+        if(maxInitialValue <= aux->value)
+            maxInitialValue = aux->value;
+        aux = aux->next;
+    }
+
+    return maxInitialValue;
+}
+
 Node *Set::search(int value) {
     if(isEmptySet())
         return head;
@@ -159,6 +175,24 @@ void Set::remove(int value) {
 
 int Set::member(int value) {
     return (contains(value)) ? 1 : 0;
+}
+
+bool Set::isEqual(Set *a, Set *b) {
+    if((a->isEmptySet() || b->isEmptySet()) || (a->size() != b->size()))
+        return false;
+    
+    Node *aux1 = (a->head)->next;
+    Node *aux2 = (b->head)->next;
+    int counter = 0;
+
+    while(aux1 != a->head) {
+        if(aux1->value == aux2->value)
+            counter++;
+        aux1 = aux1->next;
+        aux2 = aux2->next;
+    }
+
+    return (counter == size());
 }
 
 void Set::clear() {

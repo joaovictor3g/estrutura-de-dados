@@ -22,12 +22,18 @@ int main() {
 
 
     Set *set3 = new Set();
-    set3 = set->diference(set2, set);
-    // set->remove(2);
-    // set->remove(3);
+    set3->insert(2);
+    set3->insert(3);
+    set3->insert(4);
+    set3->insert(5);
+    set3->insert(6);
+    set3->insert(-1);
     
-    std::cout << set->min(set2) << std::endl;
-    set3->print();
+    // std::cout << set->min(set2) << std::endl;
+    // std::cout << set->max(set2) << std::endl;
+    // set3->print();
+    if(set2->isEqual(set2, set3))
+        std::cout << "São iguais" << std::endl;
 
     delete set;
     delete set2;

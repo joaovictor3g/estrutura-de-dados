@@ -37,7 +37,11 @@ public:
     int member(int value);
     // cria um conjunto vazio
     Set* createEmptySet();
+    // Retorna o menor valor do conjunto
     int min(Set *a);
+    // Retorna o maior valor do conjunto
+    int max(Set *a);
+    bool isEqual(Set *a, Set *b);
     // Remove todos os nós
     void clear();
 };
