@@ -6,20 +6,12 @@ int main() {
     set->insert(1);
     set->insert(2);
     set->insert(3);
-    set->insert(7);
-    set->insert(1);
-    set->insert(2);
-    set->insert(3);
-    set->insert(7);
 
     Set *set2 = new Set();
     set2->insert(2);
     set2->insert(3);
     set2->insert(4);
-    set2->insert(5);
-    set2->insert(6);
-    set2->insert(-1);
-
+    
     Set *set4 = set->simetricDiference(set, set2);
     set4->print();
 

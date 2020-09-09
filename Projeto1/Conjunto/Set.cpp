@@ -196,20 +196,45 @@ bool Set::isEqual(Set *a, Set *b) {
 }
 
 Set *Set::simetricDiference(Set *set1, Set *set2) {
-    Node *aux1 = (set1->head)->next;
-    Node *aux2 = (set2->head)->next;
+    if(set1->isEmptySet())
+        return set2;
+    if(set2->isEmptySet())
+        return set1;
 
-    Set *intersection = intersectionSet(set1, set2);
+    Set *dif1 = diference(set1, set2); // Crio um conjunto que recebe a diferenca do conjunto1 com conjunto 2
+    Set *dif2 = diference(set2, set1); // Crio um conjunto que recebe a diferenca do conjunto 2 com conjunto 1
+
     Set *newSet = new Set();
+    Node *aux1 = (dif1->head)->next; // Inicio os auxiliares apontando para o primeiro no valido de cada conjunto
+    Node *aux2 = (dif2->head)->next;
 
-    while(aux1 != set1->head) {
-        if(!intersection->contains(aux1->value) && !intersection->contains(aux2->value)) {
-            newSet->insert(aux1->value);
-            newSet->insert(aux2->value);
-        }
+    // Primeiro while adiciona os valores A - B
+    while(aux1 != dif1->head) {
+        newSet->insert(aux1->value);
         aux1 = aux1->next;
+    }
+    // Segundo while adiciona os valores B - A
+    while(aux2 != dif2->head) {
+        newSet->insert(aux2->value);
         aux2 = aux2->next;
+    }
+
+    return newSet;
+}
+
+Set *Set::copy(Set *set1, Set *set2) {
+    if(set1->isEmptySet()) { 
+        std::cout << "Conjunto vazio" << std::endl; 
+        return set1;
+    
+    }
+    Node *aux1 = (set1->head)->next;
+     
+    while(aux1 != set1->head) {
+        set2->insert(aux1->value);
+        aux1 = aux1->next;
     } 
+    return set2;
 }
 
 void Set::clear() {
