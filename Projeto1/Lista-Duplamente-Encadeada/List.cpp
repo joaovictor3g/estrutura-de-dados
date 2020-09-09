@@ -80,7 +80,8 @@ void List::removeNode(Node *p) {
                 Node *newNode = noRem->next; // Crio um novo nó que aponta para o próximo nó que p aponta
                 newNode->ant = noRem->ant; // Faço o anterior deste, apontar para onde o anterior de p aponta
                 (noRem->ant)->next = newNode; // Faço o próximo deste anterior apontar para o proximo de p
-                delete noRem; // delete o ponteiro
+                delete noRem; // deleto o ponteiro
+                break;
             }
             aux = aux->next;
         }
@@ -94,10 +95,8 @@ void List::remove(int key) {
         Node *aux = head->next; // Auxiliar recebe endereço do último nó
         while(aux != head) { 
             if(aux->key == key) { 
-                Node *noRem = aux; // Crio um ponteiro para armazenar o endereço do nó que quero remover
-                (noRem->ant)->next = noRem->next; // Proximo do no anterior aponta para o proximo do no que quero remover 
-                (noRem->next)->ant = noRem->ant; // O anterior do proximo aponta para o anterior do no que quero remover
-                delete noRem; // Finalmente removo o nó
+                removeNode(aux);
+                break;
             }
             aux = aux->next;
         }

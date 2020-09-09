@@ -42,8 +42,14 @@ void menu(List *list) {
 
 int main() {
     List *list = new List();
+    list->pushBack(1);
+    list->pushBack(2);
+    list->pushBack(3);
+    list->remove(2);
+    //menu(list);
 
-    menu(list);
+    list->print();
+    list->printReverse();
 
     delete list;
     return 0;
