@@ -44,9 +44,9 @@ int popA(Stack *p) {
         std::cout << "Pilha vazia" << std::endl;
         return 0;
     }
-    int aux = p->vec[p->topoA-1];
-    p->topoA--;
-    return aux;
+    int aux = p->vec[p->topoA-1]; // Guardo o valor contido no topo
+    p->topoA--; // Decremento o topo
+    return aux; // Retorno valor que contém  topo
 }
 
 int popB(Stack *p) {
