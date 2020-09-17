@@ -1,0 +1,7 @@
+Explicação da questão 11. Para a implementação de uma fila com duas pilhas é necessário, pensar
+que a fila obedece ao FIFO, ou seja, em uma função de remoção, o primeiro elemento da "pilha" tem que
+ser removido para que ocorra essa semelhança com a fila. Para isso, criei a função pop, que inicialmente
+verifica se a pilha está vazia, se não ela cria uma nova pilha, que vai receber todos os elementos que
+foram adicionados na pilha original, só que estes vão estar invertidos na nova pilha. Assim, posso remover
+o último valor da pilha, mas nesta abstração seria o primeiro elemento em uma fila. O tempo de execução da
+função pop é O(n), pois todo a pilha tem que ser percorrida para ser adicionada em uma nova.
