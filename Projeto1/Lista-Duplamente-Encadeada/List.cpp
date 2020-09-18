@@ -195,7 +195,7 @@ List *List::copy() {
             aux = aux->next;
         }
     }
-    return list; // Retorno a nova lista criada, já preenchido
+    return list; // Retorno a nova lista criada, já preenchido ou não
 }
 
 void List::copyArray(int arr[], int size) {
@@ -203,9 +203,7 @@ void List::copyArray(int arr[], int size) {
 }
 
 bool List::equal(List *list) {
-    if(list->size() != this->size()) // Se as listas tiverem tamanhos diferentes ja é falso
-        return false;
-    if(list->isEmpty() || this->isEmpty()) // Se as listas forem vazias já é falso
+    if(list->size() != this->size() || list->isEmpty() || this->isEmpty()) // Se as listas tiverem tamanhos diferentes ja é falso
         return false;
 
     Node *aux = head->next; // Auxiliar 1 recebe o primeiro nó válido
@@ -222,37 +220,37 @@ bool List::equal(List *list) {
 }
 
 void List::mergeLists(List *list) {
-    if(this->isEmpty() || list->isEmpty()) {
-        std::cout << "Lista vazia" << std::endl;
+    if(list->isEmpty() || this->isEmpty()) {
+        std::cout << "Impossível intercalar: uma ou mais listas são vazias" << std::endl;
     }else{
-        Node *aux = head->next;
-        Node *aux2 = (list->head)->next;
-        
-        while(aux != head) {
+        Node *aux = (list->head)->next; // Aux recebe o primeiro nó valido da lista passada por parametro
+        Node *aux2 = (this->head)->next;
+
+        while(aux != list->head && aux2 != head) {
             Node *aux3 = aux;
-            (aux3->ant)->next = aux2;
-            aux2->ant = aux3->ant;
+            aux3->next = aux2;
+            Node *aux4 = aux2;
+            aux4->next = 
 
             aux = aux->next;
-        }
+            aux2 = aux2->next;
+        } 
         
     }
+    
 }
 
 List *List::separate(int key) {
     List *list = new List();
     Node *nodeToSeparate = searchNode(key);
     
-    if(this->isEmpty())  
-        return list;
-
-    if((nodeToSeparate->next == head) && this->size() == 1) { // Verificação de apenas um nó válido 
+    if(this->isEmpty() || ((nodeToSeparate->next == head) && this->size() == 1))  // Verificação de apenas um nó válido ou vazio
         return list;
     
-    }else if(nodeToSeparate->next == head) { // Verificação se o proximo do nó buscado é o último nó
+    else if(nodeToSeparate->next == head) { // Verificação se o proximo do nó buscado é o último nó
         Node *no = nodeToSeparate->next; 
         while(no != nodeToSeparate) {
-            if(no == head)
+            if(no == head) // 
                 no = no->next;
             list->pushBack(no->key);
             no = no->next;

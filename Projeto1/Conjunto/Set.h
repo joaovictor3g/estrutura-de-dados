@@ -49,6 +49,7 @@ public:
     // Remove todos os nós
     // faz uma cópia do conjunto A em B.
     Set *copy(Set *set1, Set *set2);
+    // Remove todos os nós do conjunto
     void clear();
 };
 
