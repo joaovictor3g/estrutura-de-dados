@@ -45,11 +45,18 @@ int main() {
     list->pushBack(1);
     list->pushBack(2);
     list->pushBack(3);
-    list->remove(2);
+    // list->remove(2);
     //menu(list);
 
+    List *list2 = new List();
+    list2->pushBack(4);
+    list2->pushBack(5);
+    list2->pushBack(6);
+    list->mergeLists(list2);
+
+
     list->print();
-    list->printReverse();
+    //list->printReverse();
 
     delete list;
     return 0;
