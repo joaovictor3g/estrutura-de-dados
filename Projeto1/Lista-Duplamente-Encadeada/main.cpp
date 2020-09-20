@@ -49,12 +49,26 @@ int ListSize(List *list) {
     return list->size();
 }
 
+void removeNodeAtSpecificIndex(List *list, int index) {
+    if(list->removeNodeAt(index) < 0) {
+        cout << "Indice inexistente" << endl;
+        return;
+    }
+    cout << "O valor: " << list->removeNodeAt(index) << " que estava na posição " << index << " foi removido!!!" << endl;
+}
+
+void concatTwoLists(List *list, List *list2) {
+    list->concat(list2);
+    cout << "Listas concatenadas" << endl;
+}
+
 void menu(List *list) {
     int option = 0;
     cout << "1 - Adicionar uma chave            2 - Imprimir Lista" << endl;
     cout << "3 - Remover a última chave         4 - Inserir após um índice" << endl;
     cout << "5 - Remover uma chave especifica   6 - Remover todas as chaves com um nó específico"  << endl;
-    cout << "7 - Tamanhon da lista" << endl;
+    cout << "7 - Tamanho da lista               8 - Remover chave em um índice específico" << endl;
+    cout << "9 - Concatenar duas listas" << endl;
 
     cin >> option;
     int backToPrincipalMenu = 0;
@@ -170,8 +184,51 @@ void menu(List *list) {
                 break;
             }
 
-            default: {
+            case 8: {
+                system("clear");
+                int index = 0;
+                cout << "Digite qual indice que contém o valor a remover" << endl;
+                cin >> index;
+
+                removeNodeAtSpecificIndex(list, index);
+                cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
+                cin >> backToPrincipalMenu;
+
+                if(backToPrincipalMenu == 1)
+                    menu(list);
+                break;
+            }
+
+            case 9: {
+                system("clear");
+                cout << "Uma nova lista será criada para concatenar com a primeira" << endl;
+                List *list2 = new List();
+
+                int size = 0;
+                cout << "Digite o tamanho da nova lista: "<< endl;
+                cin >> size;
+
+                cout << "Digite os " << size << " valores"<< endl;
+                int key = 0;
                 
+                for(int i = 0; i < size; i++) {
+                    cin >> key;
+                    list2->pushBack(key);
+                }
+                concatTwoLists(list, list2);
+                print(list);
+                cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
+                cin >> backToPrincipalMenu;
+
+                if(backToPrincipalMenu == 1)
+                    menu(list);
+                break;
+            }
+
+
+            default: {
+                cout << "Valor invalido!!!" << endl; 
+                menu(list);
                 break;
             }
         }
