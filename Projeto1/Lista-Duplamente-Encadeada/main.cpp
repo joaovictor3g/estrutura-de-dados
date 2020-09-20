@@ -36,11 +36,25 @@ void removeSpecificKey(List *list, int key) {
     cout << "Chave: [" << key << "] removida com sucesso!!!" << endl;
 }
 
+void removeAllSpecificKey(List *list, int key) {
+    if(!list->contains(key)) {
+        cout << "CHAVE INEXISTENTE!!!" << endl;
+        return;
+    }
+    list->removeAll(key);
+    cout << "Todas as chaves com valor " << key << " removidas!" << endl;
+}
+
+int ListSize(List *list) {
+    return list->size();
+}
+
 void menu(List *list) {
     int option = 0;
     cout << "1 - Adicionar uma chave            2 - Imprimir Lista" << endl;
     cout << "3 - Remover a última chave         4 - Inserir após um índice" << endl;
     cout << "5 - Remover uma chave especifica   6 - Remover todas as chaves com um nó específico"  << endl;
+    cout << "7 - Tamanhon da lista" << endl;
 
     cin >> option;
     int backToPrincipalMenu = 0;
@@ -127,7 +141,37 @@ void menu(List *list) {
                 break;
             }
 
+            case 6: {
+                system("clear");
+                print(list);
+                int keyToRemove = 0;
+                cout << "Qual chave remover? " << endl;
+                cin >> keyToRemove;
+
+                system("clear");
+                removeAllSpecificKey(list, keyToRemove);
+                print(list);
+                cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
+                cin >> backToPrincipalMenu;
+
+                if(backToPrincipalMenu == 1)
+                    menu(list);
+                break;
+            }
+
+            case 7: {
+                system("clear");
+                cout << "Tamanho atual da lista: " <<  ListSize(list) << endl;
+                cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
+                cin >> backToPrincipalMenu;
+
+                if(backToPrincipalMenu == 1)
+                    menu(list);
+                break;
+            }
+
             default: {
+                
                 break;
             }
         }
