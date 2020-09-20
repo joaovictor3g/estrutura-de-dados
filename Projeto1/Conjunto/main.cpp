@@ -61,11 +61,13 @@ bool isMember(Set *set, int key) {
 
 void menu(Set *set1, Set *set2) {
     int option = 0;
-    cout << "1 - Adicionar ao conjunto A        2 - Adicionar ao conjunto B" << endl;
-    cout << "3 - Unir os dois conjuntos         4 - imprimir conjunto" << endl;
-    cout << "5 - Interseccão dos conjuntos      6 - Diferença entre os conjuntos" << endl;
-    cout << "7 - Remover valor de um conjunto   8 - Membro" << endl;
-
+    cout << "1 - Adicionar ao conjunto A               2 - Adicionar ao conjunto B" << endl;
+    cout << "3 - Unir os dois conjuntos(A + B)         4 - imprimir conjunto" << endl;
+    cout << "5 - Interseccão dos conjuntos(A ∩ B)      6 - Diferença entre os conjuntos(A - B)" << endl;
+    cout << "7 - Remover valor de um conjunto          8 - Membro" << endl;
+    cout << "9 - Menor valor do conjunto               10 - Maior valor do conjunto" << endl;
+    cout << "11 - Diferença simétrica(A ⊕ B)" << endl;
+ 
     cin >> option;
     int backToPrincipalMenu = 0;
 
@@ -206,9 +208,28 @@ void menu(Set *set1, Set *set2) {
                 break;
             }
 
+            case 9: {
+                system("clear");
+            
+               
+                cout << "O menor valor de ambos os conjuntos é: "  << endl;
+                
+                cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
+                cin >> backToPrincipalMenu;
+
+                if(backToPrincipalMenu == 1)
+                    menu(set1, set2);
+                break;
+            }
+
+            case 10: {
+                break;
+            }
+
             default: {
                 cout << "Valor invalido" << endl;
                 menu(set1, set2);
+                break;
             }
         }
     }
