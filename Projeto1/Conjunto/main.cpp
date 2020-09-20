@@ -31,11 +31,40 @@ void intersectionSets(Set *set1, Set *set2) {
     cout << endl;
 }
 
+void print(Set *set) {
+    set->print();
+}
+
+int listSize(Set *set) {
+    return set->size();
+}
+
+void diferenceSet(Set *set1, Set *set2) {
+    set1 = set1->diference(set1, set2);
+    set1->print();
+}   
+
+void removeKey(Set *set, int key) {
+    if(!set->contains(key)) {
+        cout << "Valor inexistente no conjunto!!" << endl;
+        return;
+    }
+    set->remove(key);
+    cout << key << " removido com sucesso" << endl;
+}
+
+bool isMember(Set *set, int key) {
+    return (set->member(key) == 1);
+         
+
+}
+
 void menu(Set *set1, Set *set2) {
     int option = 0;
-    cout << "1 - Adicionar ao conjunto 1        2 - Adicionar ao conjunto 2" << endl;
+    cout << "1 - Adicionar ao conjunto A        2 - Adicionar ao conjunto B" << endl;
     cout << "3 - Unir os dois conjuntos         4 - imprimir conjunto" << endl;
-    cout << "5 - Interseccão dos conjuntos" << endl;
+    cout << "5 - Interseccão dos conjuntos      6 - Diferença entre os conjuntos" << endl;
+    cout << "7 - Remover valor de um conjunto   8 - Membro" << endl;
 
     cin >> option;
     int backToPrincipalMenu = 0;
@@ -49,6 +78,7 @@ void menu(Set *set1, Set *set2) {
                 cin >> key;
 
                 addToSet(set1, key);
+                print(set1);
 
                 cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
                 cin >> backToPrincipalMenu;
@@ -65,6 +95,7 @@ void menu(Set *set1, Set *set2) {
                 cin >> key;
 
                 addToSet(set2, key);
+                print(set2);
 
                 cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
                 cin >> backToPrincipalMenu;
@@ -99,6 +130,73 @@ void menu(Set *set1, Set *set2) {
                 system("clear");
                 intersectionSets(set1, set2);
                 cout << endl;
+
+                cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
+                cin >> backToPrincipalMenu;
+
+                if(backToPrincipalMenu == 1)
+                    menu(set1, set2);
+                break;
+            }
+
+            case 6: {
+                system("clear");
+                cout << "Diferença entre os conjuntos A = ";
+                set1->print();
+                cout << " e B = ";
+                set2->print(); 
+                cout << " é:" ;
+                diferenceSet(set1, set2);
+                
+                cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
+                cin >> backToPrincipalMenu;
+
+                if(backToPrincipalMenu == 1)
+                    menu(set1, set2);
+                break;
+            }
+
+            case 7: {
+                system("clear");
+                int choice = 0;
+                int key = 0;
+                cout << "De qual conjunto remover? 1 - Conjunto A   2 - Conjunto B" << endl;
+                cin >> choice;
+
+                if(choice == 1) {
+                    cout << "Conjunto A = ";
+                    set1->print();
+                    cout << "Valor a ser removido?" << endl;
+                    cin >> key;    
+                    removeKey(set1, key);
+                
+                } else if(choice == 2)  { 
+                    cout << "Conjunto B = ";
+                    set2->print();
+                    cout << "Valor a ser removido?" << endl;
+                    cin >> key;
+                    removeKey(set2, key);
+                
+                }
+                else    cout << "Valor invalido" << endl;
+
+                cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
+                cin >> backToPrincipalMenu;
+
+                if(backToPrincipalMenu == 1)
+                    menu(set1, set2);
+                break;
+            }
+
+            case 8: {
+                system("clear");
+                int key = 0;
+                cout << "Verificar se um valor pertence a pelo menos um conjunto, digite-o" << endl;
+                cin >> key;
+                if(isMember(set1, key) || isMember(set2, key)) 
+                    cout << "Este elemento pertence a pelo menos um conjunto" << endl;
+                else
+                    cout << "Este elemento não pertence a nenhum conjunto" << endl;
 
                 cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
                 cin >> backToPrincipalMenu;
