@@ -223,24 +223,26 @@ void List::mergeLists(List *list) {
     if(list->isEmpty() || this->isEmpty()) {
         std::cout << "Impossível intercalar: uma ou mais listas são vazias" << std::endl;
     }else{
-        Node *aux = (this->head); // Aux recebe o primeiro nó valido da lista passada por parametro
+        Node *aux = (head); // Aux recebe o primeiro nó valido da lista passada por parametro
         Node *aux2 = (list->head);
 
-        while(aux->next != this->head || aux2->next != list->head) {
+        while(aux->next != head) {
             Node *aux3 = aux;
             Node *aux4 = aux2->next;
             aux3->next = aux4;
             aux4->ant = aux3;
             Node *aux5 = aux->next;
-            aux5->ant = aux4;
             aux4->next = aux5;
-        
+            aux5->ant = aux4;
+            aux5->next = head;
+            (head)->ant = aux5;
+            
+            // std::cout << "aux3 " << aux3->key << " aux4: " << aux4->key << " aux5: " << aux5->key << std::endl;
             aux = aux->next;
             aux2 = aux2->next;
         } 
         
     }
-    
 }
 
 List *List::separate(int key) {

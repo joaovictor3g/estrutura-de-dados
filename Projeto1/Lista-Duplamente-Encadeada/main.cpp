@@ -3,61 +3,115 @@
 
 using namespace std;
 
+void addList(List *list, int key) {
+    list->pushBack(key);
+    cout << "Chave adicionada com sucesso" << endl;
+}
+
+void print(List *list) {
+    cout << "Sua lista atual:" << endl;
+    list->print();
+}
+
+void printReverse(List *list) {
+    cout << "Sua lista atual:" << endl;
+    list->printReverse();
+}
+
+void removeLastKey(List *list) {
+    cout << "Última chave: " << list->popBack() << " removida com sucesso!!!" << endl;
+}
+
+void insertAfterIndex(List *list, int key, int index) {
+    list->insertAfter(key, index);
+    cout << "Valor: " << key << " adcionado apó o indice: " << index << endl;
+}
+
 void menu(List *list) {
     int option = 0;
-    cout << "Menu de opções " << endl;
-    cout << "1 - Adicionar" << endl;
-    cout << "2 - Copiar" << endl;
-    cout << "3 - Remover" << endl;
-    cout << "4 - Imprimir Lista" << endl;
-    cin >> option;
+    cout << "1 - Adicionar uma chave            2 - Imprimir Lista" << endl;
+    cout << "3 - Remover a última chave         4 - Inserir após um índice" << endl;
+    cout << "5 - Remover uma chave especifica" << endl;
 
-    int value = 0;
-    // while(option != 0) {
+    cin >> option;
+    int backToPrincipalMenu = 0;
+
+    while(true) {
         switch(option) {
             case 1: {
-                cout << "Digite o valor: " << endl;
-                cin >> value;
-                list->pushBack(value);
-                menu(list);
+                int key = 0;
+                cout << "Digite o valor da chave: " << endl;
+                cin >> key; 
+                addList(list, key);
+                system("clear");
+                cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
+                cin >> backToPrincipalMenu;
+
+                if(backToPrincipalMenu == 1)
+                    menu(list);
                 break;
             }
+
             case 2: {
-                List *list2 = new List();
-                list2 = list->copy();
-                cout << "Lista copiada" << endl;
-                menu(list);
+                int choice = 0;
+                cout << "1 - Imprimir Lista Normal      2 - Imprimir lista ao contrário" << endl;
+                cin >> choice;
+                
+                system("clear");
+                if(choice == 1)     print(list);
+                else if(choice == 2)    printReverse(list);
+                else    cout << "Valor inválido" << endl;
+                
+                cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
+                cin >> backToPrincipalMenu;
+
+                if(backToPrincipalMenu == 1)
+                    menu(list);
                 break;
             }
+
             case 3: {
+                system("clear");
+                removeLastKey(list);
+                cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
+                cin >> backToPrincipalMenu;
+
+                if(backToPrincipalMenu == 1)
+                    menu(list);
                 break;
             }
+
             case 4: {
-                list->print();
+                int key = 0;
+                int index = 0;
+                cout << "Digite o novo valor a ser adicionado: " << endl;
+                cin >> key;
+                cout << "Após qual índice? Indice no intervalo de: 0 a " << list->size() << endl;
+                cin >> index;
+                system("clear");
+
+                insertAfterIndex(list, key, index);
+                cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
+                cin >> backToPrincipalMenu;
+
+                if(backToPrincipalMenu == 1)
+                    menu(list);
                 break;
-            
+
+            }
+
+            default: {
+                break;
             }
         }
+    }
 }
 
 int main() {
     List *list = new List();
-    list->pushBack(1);
-    list->pushBack(2);
-    list->pushBack(3);
-    // list->remove(2);
-    //menu(list);
-
-    List *list2 = new List();
-    list2->pushBack(4);
-    list2->pushBack(5);
-    list2->pushBack(6);
-    list->mergeLists(list2);
-
-
-    list->print();
-    //list->printReverse();
-
+    
+    menu(list);
+ 
     delete list;
     return 0;
 }
