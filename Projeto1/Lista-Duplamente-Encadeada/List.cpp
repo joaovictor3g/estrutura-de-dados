@@ -135,6 +135,10 @@ void List::removeAll(int key) {
     while(searchNode(key) != head)  remove(key);
 }
 
+bool List::contains(int key) {
+    return searchNode(key) != head;
+}
+
 void List::print() {
     if(isEmpty())
         return;

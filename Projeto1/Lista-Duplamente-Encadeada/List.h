@@ -43,6 +43,8 @@ public:
     bool isEmpty();
     // Retorna tamanho da lista
     int size();
+    // Verifica se a lista contem a chave especificada
+    bool contains(int key);
     // Remove todos os nós da lista
     void clear();
     //     Remove o k-ésimo nó da lista encadeada e retorna
