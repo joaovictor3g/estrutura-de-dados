@@ -55,8 +55,11 @@ void removeKey(Set *set, int key) {
 
 bool isMember(Set *set, int key) {
     return (set->member(key) == 1);
-         
+}
 
+void simetricDif(Set *set1, Set *set2) {
+    set1 = set1->simetricDiference(set1, set2);
+    set1->print();
 }
 
 void menu(Set *set1, Set *set2) {
@@ -209,20 +212,27 @@ void menu(Set *set1, Set *set2) {
             }
 
             case 9: {
+                break;
+            }
+
+            case 10: {
+                break;
+            }
+
+            case 11: {
                 system("clear");
-            
-               
-                cout << "O menor valor de ambos os conjuntos é: "  << endl;
+                cout << "Diferença Simétrica entre os conjuntos A = ";
+                set1->print();
+                cout << " e B = ";
+                set2->print(); 
+                cout << " é: C = " ;
+                simetricDif(set1, set2);
                 
                 cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
                 cin >> backToPrincipalMenu;
 
                 if(backToPrincipalMenu == 1)
                     menu(set1, set2);
-                break;
-            }
-
-            case 10: {
                 break;
             }
 
