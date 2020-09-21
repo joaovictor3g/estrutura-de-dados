@@ -212,10 +212,28 @@ void menu(Set *set1, Set *set2) {
             }
 
             case 9: {
+                Set *newSet = new Set();
+                int min = newSet->min(newSet->unionSet(set1, set2));
+
+                cout << "O menor valor de todos os conjuntos é: " << min << endl;
+                cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
+                cin >> backToPrincipalMenu;
+
+                if(backToPrincipalMenu == 1)
+                    menu(set1, set2);
                 break;
             }
 
             case 10: {
+                Set *newSet = new Set();
+                int max = newSet->max(newSet->unionSet(set1, set2));
+
+                cout << "O maior valor de todos os conjuntos é: " << max << endl;
+                cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
+                cin >> backToPrincipalMenu;
+
+                if(backToPrincipalMenu == 1)
+                    menu(set1, set2);
                 break;
             }
 

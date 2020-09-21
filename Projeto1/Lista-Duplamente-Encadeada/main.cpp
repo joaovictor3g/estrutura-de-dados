@@ -68,7 +68,7 @@ void menu(List *list) {
     cout << "3 - Remover a última chave         4 - Inserir após um índice" << endl;
     cout << "5 - Remover uma chave especifica   6 - Remover todas as chaves com um nó específico"  << endl;
     cout << "7 - Tamanho da lista               8 - Remover chave em um índice específico" << endl;
-    cout << "9 - Concatenar duas listas" << endl;
+    cout << "9 - Concatenar duas listas         10 - Copiar de um array" << endl;
 
     cin >> option;
     int backToPrincipalMenu = 0;
@@ -225,6 +225,23 @@ void menu(List *list) {
                 break;
             }
 
+            case 10: {
+                int size = 0;
+                cout << "Digite a quantidade de números que deseja adicionar" << endl;
+                cin >> size;
+                int vec[size];
+                cout << "Digite os " << size << " valores agora" << endl;
+                for(int i = 0; i < size; i++) 
+                    cin >> vec[i];
+
+                list->copyArray(vec, size);
+                cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
+                cin >> backToPrincipalMenu;
+
+                if(backToPrincipalMenu == 1)
+                    menu(list);
+                break;
+            }
 
             default: {
                 cout << "Valor invalido!!!" << endl; 
