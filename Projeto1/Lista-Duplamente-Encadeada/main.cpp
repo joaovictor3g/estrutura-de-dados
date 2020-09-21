@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 #include "List.h"
 
 using namespace std;
@@ -50,11 +51,14 @@ int ListSize(List *list) {
 }
 
 void removeNodeAtSpecificIndex(List *list, int index) {
-    if(list->removeNodeAt(index) < 0) {
+    int key = list->removeNodeAt(index);
+    
+    if(key == INT_MIN) {
         cout << "Indice inexistente" << endl;
         return;
     }
-    cout << "O valor: " << list->removeNodeAt(index) << " que estava na posição " << index << " foi removido!!!" << endl;
+    cout << "O valor: " << key << " que estava na posição " << index << " foi removido!!!" << endl;
+    return;
 }
 
 void concatTwoLists(List *list, List *list2) {

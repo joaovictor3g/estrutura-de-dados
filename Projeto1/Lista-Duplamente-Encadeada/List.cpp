@@ -73,6 +73,7 @@ void List::removeNode(Node *p) {
     if(isEmpty()) {
         std::cout << "Sem nós válidos para remoção" << std::endl;
     }else{
+        // 5, 1, 2
         Node *aux = head->next; // Auxliar recebe o primeiro nó válido
         while(aux != head) { 
             if(p == aux) { // Comparo se p aponta para onde este auxiliar aponta
@@ -118,21 +119,22 @@ Node *List::searchNode(int key) {
 int List::removeNodeAt(int index) {
     if(index < 0 || index > this->size()) // Se o index não estiver neste intervalo retorno o menor inteiro
         return INT_MIN;
-    
+
     int counter = 0; // Crio um contador
     Node *aux = head->next; // Auxiliar aponta para o primeiro nó válido
     while(aux != head && counter < index) { 
         aux = aux->next;
         counter++;
     }
+    Node *noRem = aux;
+    std::cout << "Valor dentro da função:" << aux->key << std::endl;
     int key = aux->key; // key variavel que recebe o valor do meu nó antes de removê-lo
-    removeNode(aux); // removo nó para o qual o auxiliar está apontando
+    removeNode(noRem); // removo nó para o qual o auxiliar está apontando
     return key; // retorno a chave
-    
 }
 
 void List::removeAll(int key) {
-    while(searchNode(key) != head)  remove(key);
+    while(contains(key))  remove(key);
 }
 
 bool List::contains(int key) {
@@ -185,7 +187,6 @@ void List::concat(List* list) {
         pushBack(aux->key); // Adicionando os nós existentes na lista passada por parametro para a lista que referenciou esta função;
         aux = aux->next;
     }
-    list->clear(); // Liberando a lista passada por parâmetro
 }
 
 List *List::copy() {
