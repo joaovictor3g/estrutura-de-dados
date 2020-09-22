@@ -17,6 +17,10 @@ bool bt_contains(Node* node, int key); // essa chave pertence?
 
 int bt_count_leafs(Node *node); // conta o número de folhas
 
+int bt_one_child(Node *root); //  retorna a quantidade de nós de uma árvore binária que possuem apenas um filho
+
+int bt_num_interactive(Node *no); // função não-recursiva que calcula o número de nós de uma árvore binária dada como entrada
+
 Node* bt_destroy(Node* node); // libera todos os nos alocados
 
 Node *bt_copy(Node *root); //

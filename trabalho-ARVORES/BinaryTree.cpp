@@ -56,6 +56,43 @@ Node *bt_copy(Node *root) {
     return root;
 }
 
+int bt_one_child(Node *root) {
+    if(bt_empty(root)) 
+        return 0;
+    if(root->left != nullptr && root->right != nullptr) 
+        return bt_one_child(root->left) + bt_one_child(root->right);
+    
+    if(root->left != nullptr && root->right == nullptr) 
+        return bt_one_child(root->left)+1;
+    
+    if(root->right != nullptr && root->left == nullptr) 
+        return bt_one_child(root->right)+1;
+     
+}
+
+int bt_num_interactive(Node *no) {
+    if(bt_empty(no))
+        return 0;
+
+    Node *aux = no;
+    int counter = 1;
+
+    while(aux->left != nullptr) {
+        Node *aux2 = aux->left;
+        
+        if(aux->right != nullptr && aux->left != nullptr) {
+            while(aux->right != nullptr) {
+                counter++;
+                aux = aux->right;
+            }
+            counter++;
+        }
+        aux = aux2;
+    }
+
+    return counter;
+}
+
 Node* bt_destroy(Node* node) {
     if (node != nullptr) {
         node->left = bt_destroy(node->left);
