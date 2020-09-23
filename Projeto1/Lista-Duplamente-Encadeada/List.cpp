@@ -127,7 +127,7 @@ int List::removeNodeAt(int index) {
         counter++;
     }
     Node *noRem = aux;
-    std::cout << "Valor dentro da função:" << aux->key << std::endl;
+    
     int key = aux->key; // key variavel que recebe o valor do meu nó antes de removê-lo
     removeNode(noRem); // removo nó para o qual o auxiliar está apontando
     return key; // retorno a chave
@@ -228,25 +228,39 @@ void List::mergeLists(List *list) {
     if(list->isEmpty() || this->isEmpty()) {
         std::cout << "Impossível intercalar: uma ou mais listas são vazias" << std::endl;
     }else{
-        Node *aux = (head); // Aux recebe o primeiro nó valido da lista passada por parametro
-        Node *aux2 = (list->head);
-
-        while(aux->next != head) {
-            Node *aux3 = aux;
-            Node *aux4 = aux2->next;
-            aux3->next = aux4;
-            aux4->ant = aux3;
-            Node *aux5 = aux->next;
-            aux4->next = aux5;
-            aux5->ant = aux4;
-            aux5->next = head;
-            (head)->ant = aux5;
-            
-            // std::cout << "aux3 " << aux3->key << " aux4: " << aux4->key << " aux5: " << aux5->key << std::endl;
-            aux = aux->next;
-            aux2 = aux2->next;
-        } 
+        List *list2 = new List();
+        Node *aux = head->next;
+        Node *aux2 = (list->head)->next;
         
+        if(list->size() >= this->size()) {
+            while(aux2!=list->head) {
+                list2->pushBack(aux2->key);
+                while(aux != head) {
+                    list2->pushBack(aux->key);
+                    aux = aux->next;
+                    break;
+                }
+                aux2 = aux2->next;
+            }
+            list->clear();
+            list = list2->copy();
+            list2->print();
+        
+        }else{
+            while(aux!=head) {
+                list2->pushBack(aux->key);
+                while(aux2 != list->head) {
+                    list2->pushBack(aux2->key);
+                    aux2 = aux2->next;
+                    break;
+                }
+                aux = aux->next;
+            }
+            list->clear();
+            list = list2->copy();
+            list2->print();
+        }
+        // list->clear();
     }
 }
 

@@ -66,6 +66,11 @@ void concatTwoLists(List *list, List *list2) {
     cout << "Listas concatenadas" << endl;
 }
 
+void merge(List *list, List *list2) {
+    cout << "Resultado do merge: ";
+    list->mergeLists(list2);
+}
+
 void menu(List *list) {
     int option = 0;
     cout << "1 - Adicionar uma chave            2 - Imprimir Lista" << endl;
@@ -73,6 +78,7 @@ void menu(List *list) {
     cout << "5 - Remover uma chave especifica   6 - Remover todas as chaves com um nó específico"  << endl;
     cout << "7 - Tamanho da lista               8 - Remover chave em um índice específico" << endl;
     cout << "9 - Concatenar duas listas         10 - Copiar de um array" << endl;
+    cout << "11 - Fundir duas listas" << endl;
 
     cin >> option;
     int backToPrincipalMenu = 0;
@@ -247,6 +253,32 @@ void menu(List *list) {
                 break;
             }
 
+            case 11: {
+                system("clear");
+                print(list);
+                cout << "Uma nova lista será criada para fundir(merge) com a primeira" << endl;
+                List *list2 = new List();
+
+                int size = 0;
+                cout << "Digite o tamanho da nova lista: "<< endl;
+                cin >> size;
+
+                cout << "Digite os " << size << " valores"<< endl;
+                int key = 0;
+                
+                for(int i = 0; i < size; i++) {
+                    cin >> key;
+                    list2->pushBack(key);
+                }
+                list->mergeLists(list2);
+                
+                cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
+                cin >> backToPrincipalMenu;
+                if(backToPrincipalMenu == 1)
+                    menu(list);
+                break;
+            }
+
             default: {
                 cout << "Valor invalido!!!" << endl; 
                 menu(list);
@@ -260,6 +292,16 @@ int main() {
     List *list = new List();
     
     menu(list);
+    // list->pushBack(1);
+    // list->pushBack(2);
+    // list->pushBack(3);
+    // list->pushBack(4);
+    // List *list2 = new List();
+    // list2->pushBack(-1);
+    // list2->pushBack(-2);
+
+    // list->mergeLists(list2);
+    // list->print();
  
     delete list;
     return 0;
