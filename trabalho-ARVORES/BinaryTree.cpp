@@ -70,27 +70,28 @@ int bt_one_child(Node *root) {
      
 }
 
-int bt_num_interactive(Node *no) {
-    if(bt_empty(no))
+int bt_num_interactive(Node *root) {
+    if(bt_empty(root))
         return 0;
 
-    Node *aux = no;
+    Node *aux = root;
     int counter = 1;
 
-    while(aux->left != nullptr) {
-        Node *aux2 = aux->left;
-        
-        if(aux->right != nullptr && aux->left != nullptr) {
-            while(aux->right != nullptr) {
-                counter++;
-                aux = aux->right;
-            }
-            counter++;
-        }
-        aux = aux2;
-    }
+   
+}
 
-    return counter;
+bool bt_equal(Node *a1, Node *a2) {
+    // Caso base 1: Tamanhos diferentes
+    if(bt_count_leafs(a1) > bt_count_leafs(a2) || bt_count_leafs(a1) < bt_count_leafs(a2)) 
+        return false;
+    // Caso base 2: Se as duas árvores são vazias elas são idênticas 
+    if(bt_empty(a1) && bt_empty(a2))
+        return true;
+    // verificação das chaves: se iguais chamo a recursão pros lefts e rightes de cada um
+    if(a1->key == a2->key) 
+        return bt_equal(a1->left, a2->left) && bt_equal(a1->right, a2->right);
+    // Se em algum momento as chaves ja forem diferentes ja retorna falso direto
+    return false;
 }
 
 Node* bt_destroy(Node* node) {
