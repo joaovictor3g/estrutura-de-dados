@@ -74,7 +74,7 @@ void menu(List *list) {
     cout << "5 - Remover uma chave especifica   6 - Remover todas as chaves com um nó específico"  << endl;
     cout << "7 - Tamanho da lista               8 - Remover chave em um índice específico" << endl;
     cout << "9 - Concatenar duas listas         10 - Copiar de um array" << endl;
-    cout << "11 - Fundir duas listas" << endl;
+    cout << "11 - Fundir duas listas            12 - Separar listas" << endl;
 
     cin >> option;
     int backToPrincipalMenu = 0;
@@ -268,6 +268,29 @@ void menu(List *list) {
                 }
                 list = list->mergeLists(list2);
                 cout << "Sua lista atual: ";
+                list->print();
+
+                cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
+                cin >> backToPrincipalMenu;
+                if(backToPrincipalMenu == 1)
+                    menu(list);
+                break;
+            }
+
+            case 12: {
+                system("clear");
+                print(list);
+                int valueToSeparate = 0;
+                cout << "A partir de qual valor contido na lista separar?" << endl;
+                cin >> valueToSeparate;
+
+                if(!list->contains(valueToSeparate)) {
+                    cout << "Valor inexistente!!!";
+                    menu(list);
+                }
+
+                list = list->separate(valueToSeparate);
+                cout << "Resultado da lista separada: " << endl;
                 list->print();
 
                 cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;

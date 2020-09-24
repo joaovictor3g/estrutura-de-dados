@@ -234,23 +234,22 @@ List* List::mergeLists(List *list) {
     if(list->isEmpty() || this->isEmpty()) {
         std::cout << "Impossível intercalar: uma ou mais listas são vazias" << std::endl;
     }else{
-        List *list2 = new List();
-        Node *aux = head->next;
-        Node *aux2 = (list->head)->next;
-        
+        List *list2 = new List(); // Nova lista que guardará os nós intercalados
+        Node *aux = head->next; // Ponteiro auxilar
+        Node *aux2 = (list->head)->next; 
+
+        // Verificando qual lista é maior, pois isto influencia na implementação        
         if(list->size() >= this->size()) {
+            // Enquanto a maior lista ainda tiver elementos eu percorro
             while(aux2!=list->head) {
-                list2->pushBack(aux2->key);
-                while(aux != head) {
-                    list2->pushBack(aux->key);
-                    aux = aux->next;
-                    break;
+                list2->pushBack(aux2->key); // Adicionando um value de uma lista
+                if(aux != head) {
+                    list2->pushBack(aux->key); // Logo apoós o value de outra
+                    aux = aux->next; 
                 }
                 aux2 = aux2->next;
             }
-            // list->clear();
-            // return list2;
-        
+
         }else{
             while(aux!=head) {
                 list2->pushBack(aux->key);
@@ -261,9 +260,6 @@ List* List::mergeLists(List *list) {
                 }
                 aux = aux->next;
             }
-            // list->clear();
-            // (list->head)->next = list2->head->next;
-            // list2->print();
         }
         return list2;
     }
