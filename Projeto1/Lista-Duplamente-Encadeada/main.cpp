@@ -66,10 +66,6 @@ void concatTwoLists(List *list, List *list2) {
     cout << "Listas concatenadas" << endl;
 }
 
-void merge(List *list, List *list2) {
-    cout << "Resultado do merge: ";
-    list->mergeLists(list2);
-}
 
 void menu(List *list) {
     int option = 0;
@@ -270,8 +266,10 @@ void menu(List *list) {
                     cin >> key;
                     list2->pushBack(key);
                 }
-                merge(list, list2);
-                
+                list = list->mergeLists(list2);
+                cout << "Sua lista atual: ";
+                list->print();
+
                 cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
                 cin >> backToPrincipalMenu;
                 if(backToPrincipalMenu == 1)

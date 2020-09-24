@@ -74,7 +74,7 @@ public:
     //     Recebe uma List como parâmetro e constrói
     // uma nova lista com a intercalação dos nós da lista original com os nós da lista
     // passada por parâmetro. Ao final desta operação, list2 deve ficar vazia.
-    void mergeLists(List *list);
+    List* mergeLists(List *list);
 
 };
 

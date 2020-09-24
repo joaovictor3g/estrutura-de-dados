@@ -230,7 +230,7 @@ bool List::equal(List *list) {
     return (counter == this->size()); // se o contador é igual ao tamanho da lista, true se não false
 }
 
-void List::mergeLists(List *list) {
+List* List::mergeLists(List *list) {
     if(list->isEmpty() || this->isEmpty()) {
         std::cout << "Impossível intercalar: uma ou mais listas são vazias" << std::endl;
     }else{
@@ -248,9 +248,8 @@ void List::mergeLists(List *list) {
                 }
                 aux2 = aux2->next;
             }
-            list->clear();
-            (list->head)->next = list2->head->next;
-            list2->print();
+            // list->clear();
+            // return list2;
         
         }else{
             while(aux!=head) {
@@ -262,11 +261,11 @@ void List::mergeLists(List *list) {
                 }
                 aux = aux->next;
             }
-            list->clear();
-            (list->head)->next = list2->head->next;
-            list2->print();
+            // list->clear();
+            // (list->head)->next = list2->head->next;
+            // list2->print();
         }
-        // list->clear();
+        return list2;
     }
 }
 
