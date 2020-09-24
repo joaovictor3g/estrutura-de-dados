@@ -270,7 +270,7 @@ void menu(List *list) {
                     cin >> key;
                     list2->pushBack(key);
                 }
-                list->mergeLists(list2);
+                merge(list, list2);
                 
                 cout << "Voltar ao menu principal? 1 - Sim 0 - Não " << endl;
                 cin >> backToPrincipalMenu;

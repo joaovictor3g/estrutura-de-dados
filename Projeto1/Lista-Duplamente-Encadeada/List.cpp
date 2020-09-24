@@ -145,11 +145,14 @@ void List::print() {
     if(isEmpty())
         return;
     Node *aux = head->next;
+    std::cout << "[";
     while(aux != head) {
-        std::cout << aux->key << " ";
+        std::cout << aux->key;
+        if(aux->next != head)
+            std::cout << ", ";
         aux = aux->next;
     }
-    std::cout << std::endl;
+    std::cout << "]" << std::endl;
 }
 
 void List::printReverse() {
@@ -157,11 +160,14 @@ void List::printReverse() {
         std::cout << "Sem nós para imprimir" << std::endl;
     }else{
         Node *print = head->ant;
+        std::cout << "[";
         while(print != head) {
-            std::cout << print->key << " ";
+            std::cout << print->key;
+            if(print->ant != head)
+                std::cout << ", ";
             print = print->ant;
         }
-        std::cout << std::endl;
+        std::cout << "]" << std::endl;
     }
 }
 
@@ -243,7 +249,7 @@ void List::mergeLists(List *list) {
                 aux2 = aux2->next;
             }
             list->clear();
-            list = list2->copy();
+            (list->head)->next = list2->head->next;
             list2->print();
         
         }else{
@@ -257,7 +263,7 @@ void List::mergeLists(List *list) {
                 aux = aux->next;
             }
             list->clear();
-            list = list2->copy();
+            (list->head)->next = list2->head->next;
             list2->print();
         }
         // list->clear();
