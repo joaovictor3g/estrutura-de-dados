@@ -279,13 +279,17 @@ void menu(List *list) {
 
             case 12: {
                 system("clear");
+                if(list->isEmpty()) {
+                    cout << "Lista Vazia" << endl;
+                    menu(list);
+                }
                 print(list);
                 int valueToSeparate = 0;
                 cout << "A partir de qual valor contido na lista separar?" << endl;
                 cin >> valueToSeparate;
 
                 if(!list->contains(valueToSeparate)) {
-                    cout << "Valor inexistente!!!";
+                    cout << "Valor inexistente!!!" << endl;
                     menu(list);
                 }
 
