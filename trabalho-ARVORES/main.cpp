@@ -27,7 +27,7 @@ int main() {
 
     // cout << "Quantidade de folhas com somente um filho: " << bt_one_child(bt) << endl;
 
-    // cout << "Quantidade de folhas interativamente " << bt_num_interactive(bt) << endl;
+    cout << "Quantidade de folhas interativamente " << bt_num_interactive(bt) << endl;
     // Node *no = bt_copy(bt);
     // bt_print(no);
     Node *bt2 = bt_emptyTree();

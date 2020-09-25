@@ -75,8 +75,23 @@ int bt_num_interactive(Node *root) {
         return 0;
 
     Node *aux = root;
+    Node *aux2 = root;
     int counter = 1;
+    while(aux != nullptr && aux2 != nullptr) {
+        aux = aux->left;
+        aux2 = aux2->right;
+        if(aux->left != nullptr && aux->right != nullptr) {
+            counter+=2;
 
+        }else{
+            counter++;
+        }
+        if(aux2->left != nullptr && aux2->right != nullptr) {
+            counter+=2;
+        }else{
+            counter++;
+        }
+    }
    
 }
 
