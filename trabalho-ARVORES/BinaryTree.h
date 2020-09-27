@@ -21,10 +21,10 @@ int bt_one_child(Node *root); //  retorna a quantidade de nós de uma árvore bi
 
 int bt_num_interactive(Node *no); // função não-recursiva que calcula o número de nós de uma árvore binária dada como entrada
 
-bool bt_equal(Node *a1, Node *a2);
+bool bt_equal(Node *a1, Node *a2); // Verifica se as arvores são identicas
 
 Node* bt_destroy(Node* node); // libera todos os nos alocados
 
-Node *bt_copy(Node *root); //
+Node *bt_copy(Node *root); // Faz uma cópia da árvore
 
 #endif

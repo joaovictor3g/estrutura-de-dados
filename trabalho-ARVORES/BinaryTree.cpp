@@ -2,6 +2,7 @@
  * Implementacao de uma arvore binaria
  */
 #include <iostream>
+#include<stack>
 #include "BinaryTree.h"
 using std::cout;
 using std::endl;
@@ -73,31 +74,27 @@ int bt_one_child(Node *root) {
 int bt_num_interactive(Node *root) {
     if(bt_empty(root))
         return 0;
+    std::stack<Node*> p;// Criação de uma pilha que guarda ponteiros para nós
+    Node *no = root; // 
+    int counter = 0;
 
-    Node *aux = root;
-    Node *aux2 = root;
-    int counter = 1;
-    while(aux != nullptr && aux2 != nullptr) {
-        aux = aux->left;
-        aux2 = aux2->right;
-        if(aux->left != nullptr && aux->right != nullptr) {
-            counter+=2;
-
-        }else{
+    while(no != nullptr || !p.empty()) {
+        if(no != nullptr) {
             counter++;
-        }
-        if(aux2->left != nullptr && aux2->right != nullptr) {
-            counter+=2;
+            p.push(no);
+            no = no->left;
         }else{
-            counter++;
+            no = p.top();
+            p.pop();
+            no = no->right;
         }
     }
-   
+    return counter;
 }
 
 bool bt_equal(Node *a1, Node *a2) {
     // Caso base 1: Tamanhos diferentes
-    if(bt_count_leafs(a1) > bt_count_leafs(a2) || bt_count_leafs(a1) < bt_count_leafs(a2)) 
+    if(bt_count_leafs(a1) != bt_count_leafs(a2)) 
         return false;
     // Caso base 2: Se as duas árvores são vazias elas são idênticas 
     if(bt_empty(a1) && bt_empty(a2))
