@@ -20,7 +20,6 @@
 ## `Trabalhos`
 
 - [ ] [Trabalho 1](Projeto1)
-- [ ] T2
-- [ ] T3
+- [ ] [Trabalho Final](trabalhoFinal)
 
 
