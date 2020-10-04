@@ -58,21 +58,21 @@ void recursive_insertion_sort(int vet[], int size, int index) {
 }
 
 void iteractive_selection_sort(int vet[], int size) {
-    int menor = 0;
-    int index = 0;
+    int menor = 0; // varivel q vai guardar o menor valor do vetor
+    int index = 0; // variavel q vai guardar o indice do menro valor do vetor
     // 1, 5, 3, 4, 2
     for(int i = 0; i < size; i++) {
-        index = i;
+        index = i; // indice recebe o i da iteração atual
         menor = vet[i];
         for(int j = i; j < size; j++) {
             if(menor > vet[j]) {  
-                menor = vet[j];
-                index = j;
+                menor = vet[j]; // Atribuo o valor do menor, se houver menor q a varivel menor
+                index = j; // indice do menor é atualizado
             }
         }
-        int tmp = vet[i];
-        vet[i] = vet[index];
-        vet[index] = tmp;
+        int tmp = vet[i]; // guardo o valor do vetor atual
+        vet[i] = vet[index]; // troco
+        vet[index] = tmp; // ajusto os valores
     } 
 }
 

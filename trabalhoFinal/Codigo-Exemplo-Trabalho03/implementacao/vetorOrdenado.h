@@ -13,6 +13,7 @@ void recursive_insertion_sort(int vet[], int size, int index);
 // Insertion Sort iterativo
 void iteractive_insertion_sort(int vet[], int size);
 
+// Selection sort iterativo
 void iteractive_selection_sort(int vet[], int size);
 
 // verifica se vetor esta ordenado em ordem crescente
