@@ -46,6 +46,16 @@ void iteractive_insertion_sort(int vet[], int size) {
     }
 }
 
+void recursive_insertion_sort(int vet[], int size, int index) {
+    if(size == 0)
+        return;
+    if(vet[size-1] < vet[size-2]) {
+        vet[size-1] = vet[size-2];
+        recursive_insertion_sort(vet, size-1, index--);
+    }   
+         
+}
+
 // Verifica se o vetor está totalmente ordenado em ordem crescente
 bool ascending_order(int vet[], int size) {
     int counter = 0;
@@ -55,4 +65,15 @@ bool ascending_order(int vet[], int size) {
     }
 
     return (counter+1 == size);
+}
+
+void print(int vet[], int size, std::string typing, std::string method) {
+    std::cout << "Vetor ordenado " << typing << " usando método " << method << ": ";
+    std::cout << "[";
+    for(int i = 0; i < size; i++) {
+        std::cout << vet[i];
+        if(i != size-1)
+            std::cout << ", ";
+    }
+    std::cout << "]" << std::endl;
 }
