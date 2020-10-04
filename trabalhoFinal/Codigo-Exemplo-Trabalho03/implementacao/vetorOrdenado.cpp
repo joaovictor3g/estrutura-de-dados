@@ -31,16 +31,18 @@ void recursive_bubble_sort(int* v, int size, int index) {
 
 void iteractive_insertion_sort(int vet[], int size) {
     // 3, 5, 1, 0
-    int i = 0, j = 0, key = 0;
+    int i = 0, j = 0, key = 0, index = 0;
     
     for(i = 1; i < size; i++) {
         key = vet[i]; // Chave que guarda o valor que está sendo comparado
-        for(j = i; j >= 0; j--) {  // For que começa de i e decrementa-o
-            if(key < vet[j-1]) { // Comparao a chave com os valores a esquerda de key
-                vet[j] = vet[j-1]; // Movo o valor de key para direita
-                vet[j-1] = key; // ajusto a posição de key
+        index = i; // Guardando indice da chave inicial
+        for(j = i - 1; j >= 0; j--) {  // For que começa de i e decrementa-o
+            if(key < vet[j]) { // Comparo a chave com os valores a esquerda de key
+                vet[j+1] = vet[j]; // Movo o valor de key para direita  
+                index = j; // guardando os indices a esquerda se houver
             }
         }
+        vet[index] = key; // ajusto a posição de key
     }
 }
 

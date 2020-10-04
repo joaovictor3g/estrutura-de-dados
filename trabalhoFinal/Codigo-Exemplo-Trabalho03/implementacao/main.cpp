@@ -1,14 +1,14 @@
 #include <iostream>
 #include <cstdlib>
 #include "vetorOrdenado.h"
-#define TAM 5
+#define TAM 1000
 
 int main() {
     srand(time(NULL));
 
     int *vetor = new int[TAM];
     for(int i = 0; i < TAM; i++) 
-        vetor[i] = rand()%100;
+        vetor[i] = rand()%1000;
     
 
     std::cout << "Vetor original: ";
