@@ -1,8 +1,6 @@
 #include <iostream>
 #include "vetorOrdenado.h"
 
-int ind = 5;
-
 void iteractive_bubble_sort(int v[], int size) {
     bool ordenado = false; // flag que para a execução do while
     
@@ -31,6 +29,22 @@ void recursive_bubble_sort(int* v, int size, int index) {
     recursive_bubble_sort(v, size-1, index); // chamo a recursão
 }
 
+void iteractive_insertion_sort(int vet[], int size) {
+    // 3, 5, 1, 0
+    int i = 0, j = 0, key = 0;
+    
+    for(i = 1; i < size; i++) {
+        key = vet[i]; // Chave que guarda o valor que está sendo comparado
+        for(j = i; j >= 0; j--) {  // For que começa de i e decrementa-o
+            if(key < vet[j-1]) { // Comparao a chave com os valores a esquerda de key
+                vet[j] = vet[j-1]; // Movo o valor de key para direita
+                vet[j-1] = key; // ajusto a posição de key
+            }
+        }
+    }
+}
+
+// Verifica se o vetor está totalmente ordenado em ordem crescente
 bool ascending_order(int vet[], int size) {
     int counter = 0;
     for(int i = 0; i < size - 1; i++) {

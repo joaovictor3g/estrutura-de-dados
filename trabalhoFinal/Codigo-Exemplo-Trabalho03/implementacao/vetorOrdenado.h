@@ -7,6 +7,12 @@ void recursive_bubble_sort(int vet[], int size, int index);
 // Bubble sort iterativo
 void iteractive_bubble_sort(int vet[], int size);
 
+// Insertion Sort recursivo
+void recursive_insertion_sort(int vet[], int size);
+
+// Insertion Sort iterativo
+void iteractive_insertion_sort(int vet[], int size);
+
 // verifica se vetor esta ordenado em ordem crescente
 bool ascending_order(int vet[], int size);
 
