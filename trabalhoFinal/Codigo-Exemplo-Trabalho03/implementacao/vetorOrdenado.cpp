@@ -46,6 +46,7 @@ void iteractive_insertion_sort(int vet[], int size) {
     }
 }
 
+// a imlementare
 void recursive_insertion_sort(int vet[], int size, int index) {
     if(size == 0)
         return;
@@ -54,6 +55,25 @@ void recursive_insertion_sort(int vet[], int size, int index) {
         recursive_insertion_sort(vet, size-1, index--);
     }   
          
+}
+
+void iteractive_selection_sort(int vet[], int size) {
+    int menor = 0;
+    int index = 0;
+    // 1, 5, 3, 4, 2
+    for(int i = 0; i < size; i++) {
+        index = i;
+        menor = vet[i];
+        for(int j = i; j < size; j++) {
+            if(menor > vet[j]) {  
+                menor = vet[j];
+                index = j;
+            }
+        }
+        int tmp = vet[i];
+        vet[i] = vet[index];
+        vet[index] = tmp;
+    } 
 }
 
 // Verifica se o vetor está totalmente ordenado em ordem crescente
