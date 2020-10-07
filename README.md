@@ -8,18 +8,12 @@
 - [x] Listas Sequenciais
 - [x] Listas Encadeadas
 - [x] Pilhas, filas
-- [ ] Árvores binárias: representação e busca
-- [ ] Algoritmos de Ordenação
-
-## `Provas`
-
-- [ ] AP1 - 01/04/2020
-- [ ] AP2 - 13/05/2020
-- [ ] AP3 - 17/06/2020
+- [x] Árvores binárias: representação e busca
+- [x] Algoritmos de Ordenação
 
 ## `Trabalhos`
 
-- [ ] [Trabalho 1](Projeto1)
+- [x] [Trabalho 1](Projeto1)
 - [ ] [Trabalho Final](trabalhoFinal)
 
 
