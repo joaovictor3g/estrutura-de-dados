@@ -49,63 +49,28 @@ int main() {
 	// Etapa 2 - Execução do CocktailSort
 	// Para cada arquivo gerado na etapa 1, ler o arquivo e popular
 	// um vetor de inteiros com os dados lidos.
-	std::ofstream ofs("resultados/resultadoInsertionSort.txt", std::ofstream::out);
-    for(int iteracao = 0; iteracao < total_sizes; iteracao++) {
-		
-		long double duracao_media_bubble = 0.0;
-		int tamanho_vetor = sizes[iteracao]; // pega o tamanho do vetor para esta iteracao
-		int vet[tamanho_vetor]; // cria vetor a ser ordenado
-		
-		// Para cada tamanho de vetor, a funcao gera_dados() gerou 5 vetores diferentes. 
-		// Cada um usou uma semente diferente. Agora, vamos ler cada um desses vetores, 
-		// Chamar o bubble sort para ordena-los e, entao, calcular o tempo medio de 
-		// execucao dessas cinco chamadas e depois salvar esse tempo medio em arquivo.
-		for(int semente = 0; semente < 5; semente++) {	
-			string nome_arquivo = "dados/random"+std::to_string(iteracao)+"_"+std::to_string(semente)+".dat";
-		
-			ler_dados(tamanho_vetor, vet, nome_arquivo.c_str());
-			
-			// BubbleSort ------------------------------------------------------
-			// obtendo o tempo inicial
-			auto ini = std::chrono::high_resolution_clock::now();
-		    iteractive_insertion_sort(vet, tamanho_vetor); // ordena o vetor usando o bubbleSort
-			// print(vet, TAM, "iterativamente", "recursivamente");		
-			// obtendo o tempo final
-			auto fim = std::chrono::high_resolution_clock::now();
-		
-			// obtendo a duração total da ordenação
-			auto duracao_bubble = std::chrono::duration_cast<std::chrono::microseconds>(fim - ini).count();
-			
-			duracao_media_bubble += duracao_bubble;
-			
-		}
-		
-		duracao_media_bubble = duracao_media_bubble / 5.0;
-		cout << "[Insertion Sort] N = " << tamanho_vetor << ", tempo médio de execução = " << duracao_media_bubble << " microssegundos" << endl;
-		ofs << tamanho_vetor << " " << duracao_media_bubble << "\n"; // grava no arquivo de resultados do cocktail
-	}
-	
-	ofs.close(); // fecha arquivo de resultados do CockTail Sort
-	// ------------------------------------------------------------ 
-	
-	// ------------------------------------------------------------
-	// Bubble Sort Recursivo
-	// std::ofstream ofs2("resultados/resultadoBubbleSortRecursivo.txt", std::ofstream::out);
-    // for(int iteracao = 0; iteracao < 4; iteracao++) {
+	// std::ofstream ofs("resultados/resultadoInsertionSort.txt", std::ofstream::out);
+    // for(int iteracao = 0; iteracao < total_sizes; iteracao++) {
 		
 	// 	long double duracao_media_bubble = 0.0;
 	// 	int tamanho_vetor = sizes[iteracao]; // pega o tamanho do vetor para esta iteracao
 	// 	int vet[tamanho_vetor]; // cria vetor a ser ordenado
 		
-
+	// 	// Para cada tamanho de vetor, a funcao gera_dados() gerou 5 vetores diferentes. 
+	// 	// Cada um usou uma semente diferente. Agora, vamos ler cada um desses vetores, 
+	// 	// Chamar o bubble sort para ordena-los e, entao, calcular o tempo medio de 
+	// 	// execucao dessas cinco chamadas e depois salvar esse tempo medio em arquivo.
 	// 	for(int semente = 0; semente < 5; semente++) {	
 	// 		string nome_arquivo = "dados/random"+std::to_string(iteracao)+"_"+std::to_string(semente)+".dat";
 		
 	// 		ler_dados(tamanho_vetor, vet, nome_arquivo.c_str());
 			
+	// 		// BubbleSort ------------------------------------------------------
+	// 		// obtendo o tempo inicial
 	// 		auto ini = std::chrono::high_resolution_clock::now();
-	// 	    recursive_bubble_sort(vet, tamanho_vetor, tamanho_vetor); // ordena o vetor usando o bubbleSort
-			
+	// 	    iteractive_insertion_sort(vet, tamanho_vetor); // ordena o vetor usando o bubbleSort
+	// 		// print(vet, TAM, "iterativamente", "recursivamente");		
+	// 		// obtendo o tempo final
 	// 		auto fim = std::chrono::high_resolution_clock::now();
 		
 	// 		// obtendo a duração total da ordenação
@@ -116,10 +81,45 @@ int main() {
 	// 	}
 		
 	// 	duracao_media_bubble = duracao_media_bubble / 5.0;
-	// 	cout << "[BubbleSort Recursivo] N = " << tamanho_vetor << ", tempo médio de execução = " << duracao_media_bubble << " microssegundos" << endl;
-	// 	ofs2 << tamanho_vetor << " " << duracao_media_bubble << "\n"; // grava no arquivo de resultados do bubble
+	// 	cout << "[Insertion Sort] N = " << tamanho_vetor << ", tempo médio de execução = " << duracao_media_bubble << " microssegundos" << endl;
+	// 	ofs << tamanho_vetor << " " << duracao_media_bubble << "\n"; // grava no arquivo de resultados do cocktail
 	// }
 	
-	// ofs2.close(); // fecha arquivo de resultados do CockTail Sort
+	// ofs.close(); // fecha arquivo de resultados do CockTail Sort
+	// ------------------------------------------------------------ 
+	
+	// ------------------------------------------------------------
+	// Bubble Sort Recursivo
+	std::ofstream ofs2("resultados/resultadoSelectionSort.txt", std::ofstream::out);
+    for(int iteracao = 0; iteracao < total_sizes; iteracao++) {
+		
+		long double duracao_media_bubble = 0.0;
+		int tamanho_vetor = sizes[iteracao]; // pega o tamanho do vetor para esta iteracao
+		int vet[tamanho_vetor]; // cria vetor a ser ordenado
+		
+
+		for(int semente = 0; semente < 5; semente++) {	
+			string nome_arquivo = "dados/random"+std::to_string(iteracao)+"_"+std::to_string(semente)+".dat";
+		
+			ler_dados(tamanho_vetor, vet, nome_arquivo.c_str());
+			
+			auto ini = std::chrono::high_resolution_clock::now();
+		    iteractive_selection_sort(vet, tamanho_vetor); // ordena o vetor usando o bubbleSort
+			
+			auto fim = std::chrono::high_resolution_clock::now();
+		
+			// obtendo a duração total da ordenação
+			auto duracao_bubble = std::chrono::duration_cast<std::chrono::microseconds>(fim - ini).count();
+			
+			duracao_media_bubble += duracao_bubble;
+			
+		}
+		
+		duracao_media_bubble = duracao_media_bubble / 5.0;
+		cout << "[Selection Sort] N = " << tamanho_vetor << ", tempo médio de execução = " << duracao_media_bubble << " microssegundos" << endl;
+		ofs2 << tamanho_vetor << " " << duracao_media_bubble << "\n"; // grava no arquivo de resultados do bubble
+	}
+	
+	ofs2.close(); // fecha arquivo de resultados do CockTail Sort
 
 }
