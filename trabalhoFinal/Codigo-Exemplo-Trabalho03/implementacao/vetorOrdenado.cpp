@@ -30,7 +30,6 @@ void recursive_bubble_sort(int* v, int size, int index) {
 }
 
 void iteractive_insertion_sort(int vet[], int size) {
-    // 3, 5, 1, 0
     int i = 0, j = 0, key = 0, index = 0;
     
     for(i = 1; i < size; i++) {
@@ -46,15 +45,22 @@ void iteractive_insertion_sort(int vet[], int size) {
     }
 }
 
-// a imlementare
-void recursive_insertion_sort(int vet[], int size, int index) {
-    if(size == 0)
+// a imlementar
+// 3, 5, 1, 9, 0
+void recursive_insertion_sort(int vet[], int size, int index, int key, int current) {
+    if(ascending_order(vet, size))   
         return;
-    if(vet[size-1] < vet[size-2]) {
-        vet[size-1] = vet[size-2];
-        recursive_insertion_sort(vet, size-1, index--);
-    }   
-         
+    if(current > size-1)    
+        return;
+
+    if(key < vet[index] && index >= 0) {
+        vet[index+1] = vet[index];
+    
+        recursive_insertion_sort(vet, size, index-1, key, current);
+    }
+    vet[index+1] = key;
+    recursive_insertion_sort(vet, size, current, vet[current+1], current+1);
+    
 }
 
 void iteractive_selection_sort(int vet[], int size) {
@@ -87,8 +93,8 @@ bool ascending_order(int vet[], int size) {
     return (counter+1 == size);
 }
 
-void print(int vet[], int size, std::string typing, std::string method) {
-    std::cout << "Vetor ordenado " << typing << " usando método " << method << ": ";
+void print(int vet[], int size) {
+    std::cout << "Vetor ordenado : ";
     std::cout << "[";
     for(int i = 0; i < size; i++) {
         std::cout << vet[i];

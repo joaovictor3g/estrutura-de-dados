@@ -8,7 +8,7 @@ void recursive_bubble_sort(int vet[], int size, int index);
 void iteractive_bubble_sort(int vet[], int size);
 
 // Insertion Sort recursivo
-void recursive_insertion_sort(int vet[], int size, int index);
+void recursive_insertion_sort(int vet[], int size, int index, int key, int current);
 
 // Insertion Sort iterativo
 void iteractive_insertion_sort(int vet[], int size);
@@ -16,12 +16,14 @@ void iteractive_insertion_sort(int vet[], int size);
 // Selection sort iterativo
 void iteractive_selection_sort(int vet[], int size);
 
+void recursive_selection_sort(int vet[], int size);
+
 // verifica se vetor esta ordenado em ordem crescente
 bool ascending_order(int vet[], int size);
 
 // Imprime o vetor
 // typing: recursivamente ou iterativamente
 // method: metodo de ordenação usado
-void print(int vet[], int size, std::string tying, std::string method);
+void print(int vet[], int size);
 
 #endif

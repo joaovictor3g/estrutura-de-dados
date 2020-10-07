@@ -3,6 +3,7 @@
 #include <fstream>
 #include <chrono>
 #include "vetorOrdenado.h"
+#define TAM 5
 
 using namespace std;
 
@@ -89,37 +90,51 @@ int main() {
 	// ------------------------------------------------------------ 
 	
 	// ------------------------------------------------------------
-	// Bubble Sort Recursivo
-	std::ofstream ofs2("resultados/resultadoSelectionSort.txt", std::ofstream::out);
-    for(int iteracao = 0; iteracao < total_sizes; iteracao++) {
+	// Selection Sort
+	// std::ofstream ofs2("resultados/resultadoSelectionSort.txt", std::ofstream::out);
+    // for(int iteracao = 0; iteracao < total_sizes; iteracao++) {
 		
-		long double duracao_media_bubble = 0.0;
-		int tamanho_vetor = sizes[iteracao]; // pega o tamanho do vetor para esta iteracao
-		int vet[tamanho_vetor]; // cria vetor a ser ordenado
+	// 	long double duracao_media_bubble = 0.0;
+	// 	int tamanho_vetor = sizes[iteracao]; // pega o tamanho do vetor para esta iteracao
+	// 	int vet[tamanho_vetor]; // cria vetor a ser ordenado
 		
 
-		for(int semente = 0; semente < 5; semente++) {	
-			string nome_arquivo = "dados/random"+std::to_string(iteracao)+"_"+std::to_string(semente)+".dat";
+	// 	for(int semente = 0; semente < 5; semente++) {	
+	// 		string nome_arquivo = "dados/random"+std::to_string(iteracao)+"_"+std::to_string(semente)+".dat";
 		
-			ler_dados(tamanho_vetor, vet, nome_arquivo.c_str());
+	// 		ler_dados(tamanho_vetor, vet, nome_arquivo.c_str());
 			
-			auto ini = std::chrono::high_resolution_clock::now();
-		    iteractive_selection_sort(vet, tamanho_vetor); // ordena o vetor usando o bubbleSort
+	// 		auto ini = std::chrono::high_resolution_clock::now();
+	// 	    iteractive_selection_sort(vet, tamanho_vetor); // ordena o vetor usando o bubbleSort
 			
-			auto fim = std::chrono::high_resolution_clock::now();
+	// 		auto fim = std::chrono::high_resolution_clock::now();
 		
-			// obtendo a duração total da ordenação
-			auto duracao_bubble = std::chrono::duration_cast<std::chrono::microseconds>(fim - ini).count();
+	// 		// obtendo a duração total da ordenação
+	// 		auto duracao_bubble = std::chrono::duration_cast<std::chrono::microseconds>(fim - ini).count();
 			
-			duracao_media_bubble += duracao_bubble;
+	// 		duracao_media_bubble += duracao_bubble;
 			
-		}
+	// 	}
 		
-		duracao_media_bubble = duracao_media_bubble / 5.0;
-		cout << "[Selection Sort] N = " << tamanho_vetor << ", tempo médio de execução = " << duracao_media_bubble << " microssegundos" << endl;
-		ofs2 << tamanho_vetor << " " << duracao_media_bubble << "\n"; // grava no arquivo de resultados do bubble
-	}
+	// 	duracao_media_bubble = duracao_media_bubble / 5.0;
+	// 	cout << "[Selection Sort] N = " << tamanho_vetor << ", tempo médio de execução = " << duracao_media_bubble << " microssegundos" << endl;
+	// 	ofs2 << tamanho_vetor << " " << duracao_media_bubble << "\n"; // grava no arquivo de resultados do bubble
+	// }
 	
-	ofs2.close(); // fecha arquivo de resultados do CockTail Sort
-
+	// ofs2.close(); // fecha arquivo de resultados do CockTail Sort
+	int vet[TAM];
+	// for(int i = 0; i < TAM; i++)
+	// 	vet[i] = rand()%100;
+	vet[0]=3;
+	vet[1]=5;
+	vet[2]=1;
+	vet[3]=9;
+	vet[4]=0;
+	
+	cout << "Vetor original:";
+	for(int i = 0; i < TAM; i++)
+		cout << vet[i] << " ";
+	cout << endl;
+	recursive_insertion_sort(vet, TAM, 0, vet[1], 1);
+	print(vet, TAM);
 }
