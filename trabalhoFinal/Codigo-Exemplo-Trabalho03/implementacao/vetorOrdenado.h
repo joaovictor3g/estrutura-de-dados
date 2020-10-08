@@ -26,4 +26,6 @@ bool ascending_order(int vet[], int size);
 // method: metodo de ordenação usado
 void print(int vet[], int size);
 
+
+void insertionSortRecursive(int arr[], int n);
 #endif

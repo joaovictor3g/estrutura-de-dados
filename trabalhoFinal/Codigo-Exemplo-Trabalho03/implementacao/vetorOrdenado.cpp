@@ -48,16 +48,14 @@ void iteractive_insertion_sort(int vet[], int size) {
 // a imlementar
 // 3, 5, 1, 9, 0
 void recursive_insertion_sort(int vet[], int size, int index, int key, int current) {
-    vet[index+1] = key; // Chave já é atribuida ao vetor
-    if(index >= 0 && key < vet[index]) {
-        vet[index+1] = vet[index]; // Se maiores q a chave movidos a direita
-        int current_index = index-1; // Decremento o índice
-        recursive_insertion_sort(vet, size, current_index, key, current); // Chamo a recursão ṕassando o vetor, o index decrementado,
+    while(index >= 0 && key < vet[index]) {
+        vet[index+1] = vet[index]; // Valores maiores q a chave vão sendo deslocados a direita
+        index--; // index decrementado
     }
-    
+    vet[index+1] = key; // valor atualizado com a chave
     if(current < size-1) {  
-        int next = vet[current+1]; // valor q key vai receber q é o próximo a direita dele
-        recursive_insertion_sort(vet, size, current, next, current+1);
+        // valor q key vai receber q é o próximo a direita dele
+        recursive_insertion_sort(vet, size, current, vet[current+1], current+1);
     }else return; // Caso base
 }
 
@@ -91,6 +89,7 @@ bool ascending_order(int vet[], int size) {
     return (counter+1 == size);
 }
 
+
 void print(int vet[], int size) {
     std::cout << "Vetor ordenado : ";
     std::cout << "[";
@@ -101,3 +100,27 @@ void print(int vet[], int size) {
     }
     std::cout << "]" << std::endl;
 }
+void insertionSortRecursive(int arr[], int n) 
+{ 
+    // Base case 
+    if (n <= 1) 
+        return; 
+  
+    // Sort first n-1 elements 
+    insertionSortRecursive( arr, n-1 ); 
+  
+    // Insert last element at its correct position 
+    // in sorted array. 
+    int last = arr[n-1]; 
+    int j = n-2; 
+  
+    /* Move elements of arr[0..i-1], that are 
+      greater than key, to one position ahead 
+      of their current position */
+    while (j >= 0 && arr[j] > last) 
+    { 
+        arr[j+1] = arr[j]; 
+        j--; 
+    } 
+    arr[j+1] = last; 
+} 
