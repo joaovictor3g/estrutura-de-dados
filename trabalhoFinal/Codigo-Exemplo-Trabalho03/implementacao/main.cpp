@@ -125,24 +125,24 @@ int main() {
 	// ofs2.close(); // fecha arquivo de resultados do CockTail Sort
 	
 	
-	int* vet = new int[TAM];
-	for(int i = 0; i < TAM; i++)
-		vet[i] = rand()%100;
+	// int* vet = new int[TAM];
+	// for(int i = 0; i < TAM; i++)
+	// 	vet[i] = rand()%1000;
 	
 	
-	cout << "Vetor original:";
-	for(int i = 0; i < TAM; i++)
-		cout << vet[i] << " ";
-	cout << endl;
-	int key = vet[1];
-	int current = 1;
-	int index = 0;
-	int size = TAM;
-	recursive_insertion_sort(vet, size, index, key, current);
+	// cout << "Vetor original:";
+	// for(int i = 0; i < TAM; i++)
+	// 	cout << vet[i] << " ";
+	// cout << endl;
+	// int key = vet[1];
+	// int current = 1;
+	// int index = 0;
+	// int size = TAM;
+	// recursive_selection_sort(vet, size, index, vet[0], 0);
 	
-	print(vet, TAM);
+	// print(vet, TAM);
 
-	delete[] vet;
+	// delete[] vet;
 
 	// std::ofstream ofs3("resultados/resultadoInsertionSortRec.txt", std::ofstream::out);
     // for(int iteracao = 0; iteracao < total_sizes; iteracao++) {
@@ -175,4 +175,36 @@ int main() {
 	// }
 	
 	// ofs3.close(); // fecha arquivo de resultados do CockTail Sort
+
+	std::ofstream ofs4("resultados/resultadoSelectionSortRec.txt", std::ofstream::out);
+    for(int iteracao = 0; iteracao < total_sizes; iteracao++) {
+		
+		long double duracao_media_bubble = 0.0;
+		int tamanho_vetor = sizes[iteracao]; // pega o tamanho do vetor para esta iteracao
+		int vet[tamanho_vetor]; // cria vetor a ser ordenado
+		
+
+		for(int semente = 0; semente < 5; semente++) {	
+			string nome_arquivo = "dados/random"+std::to_string(iteracao)+"_"+std::to_string(semente)+".dat";
+		
+			ler_dados(tamanho_vetor, vet, nome_arquivo.c_str());
+			
+			auto ini = std::chrono::high_resolution_clock::now();
+		    recursive_selection_sort(vet, tamanho_vetor, 0, vet[0], 0); // ordena o vetor usando o bubbleSort
+			
+			auto fim = std::chrono::high_resolution_clock::now();
+		
+			// obtendo a duração total da ordenação
+			auto duracao_bubble = std::chrono::duration_cast<std::chrono::microseconds>(fim - ini).count();
+			
+			duracao_media_bubble += duracao_bubble;
+			
+		}
+		
+		duracao_media_bubble = duracao_media_bubble / 5.0;
+		cout << "[Selection Sort Recursivo] N = " << tamanho_vetor << ", tempo médio de execução = " << duracao_media_bubble << " microssegundos" << endl;
+		ofs4 << tamanho_vetor << " " << duracao_media_bubble << "\n"; // grava no arquivo de resultados do bubble
+	}
+	
+	ofs4.close(); // fecha arquivo de resultados do Selection Sort Recursivo
 }

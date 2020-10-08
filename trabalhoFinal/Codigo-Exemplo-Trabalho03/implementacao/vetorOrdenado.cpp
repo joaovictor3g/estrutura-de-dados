@@ -54,7 +54,7 @@ void recursive_insertion_sort(int vet[], int size, int index, int key, int curre
     }
     vet[index+1] = key; // valor atualizado com a chave
     if(current < size-1) {  
-        // valor q key vai receber q é o próximo a direita dele
+        // valor q key vai receber q é o próximo q estava a direita dele
         recursive_insertion_sort(vet, size, current, vet[current+1], current+1);
     }else return; // Caso base
 }
@@ -76,6 +76,28 @@ void iteractive_selection_sort(int vet[], int size) {
         vet[i] = vet[index]; // troco
         vet[index] = tmp; // ajusto os valores
     } 
+}
+
+void recursive_selection_sort(int vet[], int size, int index, int min, int current_position) {
+    int i = current_position; // Indice i recebe a posição atual
+    for(; i < size; i++) { // loop da posição inicial até size-1
+        if(min > vet[i]) { // Verifico qual o menor valor contido no vetor
+            min = vet[i]; // atualizo min
+            index = i; // atualizo o index
+        }
+    }
+    int tmp = vet[current_position]; // variavel temporária que recebe o valor a ser trocado
+    vet[current_position] = vet[index]; // recebe o menor valor, se o menor for ele mesmo, vai receber ele mesmo
+    vet[index] = tmp; // vetor na posição doi index recebe o valor trocado
+
+    if(current_position < size-1) { // Caso de parada
+        // size permanece o mesmo
+        // index recebe a posição atual mais 1
+        // min recebe o proximo a sua direita
+        // current_position recebe ele mesmo mais 1.
+        recursive_selection_sort(vet, size, current_position+1, vet[current_position+1], current_position+1);
+    
+    }else return; // caso base
 }
 
 // Verifica se o vetor está totalmente ordenado em ordem crescente
@@ -100,27 +122,3 @@ void print(int vet[], int size) {
     }
     std::cout << "]" << std::endl;
 }
-void insertionSortRecursive(int arr[], int n) 
-{ 
-    // Base case 
-    if (n <= 1) 
-        return; 
-  
-    // Sort first n-1 elements 
-    insertionSortRecursive( arr, n-1 ); 
-  
-    // Insert last element at its correct position 
-    // in sorted array. 
-    int last = arr[n-1]; 
-    int j = n-2; 
-  
-    /* Move elements of arr[0..i-1], that are 
-      greater than key, to one position ahead 
-      of their current position */
-    while (j >= 0 && arr[j] > last) 
-    { 
-        arr[j+1] = arr[j]; 
-        j--; 
-    } 
-    arr[j+1] = last; 
-} 

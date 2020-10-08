@@ -16,7 +16,8 @@ void iteractive_insertion_sort(int vet[], int size);
 // Selection sort iterativo
 void iteractive_selection_sort(int vet[], int size);
 
-void recursive_selection_sort(int vet[], int size);
+// Selection Sort recursivo
+void recursive_selection_sort(int vet[], int size, int index, int min, int current);
 
 // verifica se vetor esta ordenado em ordem crescente
 bool ascending_order(int vet[], int size);
@@ -26,6 +27,4 @@ bool ascending_order(int vet[], int size);
 // method: metodo de ordenação usado
 void print(int vet[], int size);
 
-
-void insertionSortRecursive(int arr[], int n);
 #endif
