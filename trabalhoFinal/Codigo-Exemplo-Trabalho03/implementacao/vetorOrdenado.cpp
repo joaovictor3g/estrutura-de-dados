@@ -48,19 +48,17 @@ void iteractive_insertion_sort(int vet[], int size) {
 // a imlementar
 // 3, 5, 1, 9, 0
 void recursive_insertion_sort(int vet[], int size, int index, int key, int current) {
-    if(ascending_order(vet, size))   
-        return;
-    if(current > size-1)    
-        return;
-
-    if(key < vet[index] && index >= 0) {
-        vet[index+1] = vet[index];
-    
-        recursive_insertion_sort(vet, size, index-1, key, current);
+    vet[index+1] = key; // Chave já é atribuida ao vetor
+    if(index >= 0 && key < vet[index]) {
+        vet[index+1] = vet[index]; // Se maiores q a chave movidos a direita
+        int current_index = index-1; // Decremento o índice
+        recursive_insertion_sort(vet, size, current_index, key, current); // Chamo a recursão ṕassando o vetor, o index decrementado,
     }
-    vet[index+1] = key;
-    recursive_insertion_sort(vet, size, current, vet[current+1], current+1);
     
+    if(current < size-1) {  
+        int next = vet[current+1]; // valor q key vai receber q é o próximo a direita dele
+        recursive_insertion_sort(vet, size, current, next, current+1);
+    }else return; // Caso base
 }
 
 void iteractive_selection_sort(int vet[], int size) {

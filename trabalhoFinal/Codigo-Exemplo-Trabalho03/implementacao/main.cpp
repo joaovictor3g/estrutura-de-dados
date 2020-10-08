@@ -3,7 +3,7 @@
 #include <fstream>
 #include <chrono>
 #include "vetorOrdenado.h"
-#define TAM 5
+#define TAM 30
 
 using namespace std;
 
@@ -123,18 +123,22 @@ int main() {
 	
 	// ofs2.close(); // fecha arquivo de resultados do CockTail Sort
 	int vet[TAM];
-	// for(int i = 0; i < TAM; i++)
-	// 	vet[i] = rand()%100;
-	vet[0]=3;
-	vet[1]=5;
-	vet[2]=1;
-	vet[3]=9;
-	vet[4]=0;
+	for(int i = 0; i < TAM; i++)
+		vet[i] = rand()%100;
+	// vet[0]=3;
+	// vet[1]=5;
+	// vet[2]=9;
+	// vet[3]=11;
+	// vet[4]=10;
 	
 	cout << "Vetor original:";
 	for(int i = 0; i < TAM; i++)
 		cout << vet[i] << " ";
 	cout << endl;
-	recursive_insertion_sort(vet, TAM, 0, vet[1], 1);
+	int key = vet[1];
+	int current = 1;
+	int index = 0;
+	int size = TAM;
+	recursive_insertion_sort(vet, size, index, key, current);
 	print(vet, TAM);
 }
