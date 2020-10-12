@@ -138,15 +138,16 @@ void recursive_merge_sort(int vet[], int begin, int end) {
 }
 
 void iteractive_merge_sort(int vet[], int begin, int end) {
-    int middle = (end+begin)/2; // meio do vetor
-
+    int middle = (begin+end)/2; // meio do vetor
     // neste laço o vetor vai sendo passando
     // começando com uma única posição
     // logo após duas posições, três posições
     // até o vetor inteiro ser passado
-    for(int i = begin; i < end-1; i++) 
-        merge(vet, begin, i, i+1);
-
+    for(int i = begin; i < middle; i++) // Loop do inicio do vetor até o meio: primeira parte
+        merge(vet, begin, i, i+1); // interacalando e ordenando a primeira parte
+    for(int i = middle; i < end; i++)  // Loop do meio do vetor até o fim: segunda parte
+        merge(vet, middle+1, i, i+1); // 
+    merge(vet, begin, middle, end);
 }
 
 // Verifica se o vetor está totalmente ordenado em ordem crescente
