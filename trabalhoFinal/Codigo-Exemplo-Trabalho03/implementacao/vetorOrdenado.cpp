@@ -63,7 +63,7 @@ void iteractive_selection_sort(int vet[], int size) {
     int menor = 0; // varivel q vai guardar o menor valor do vetor
     int index = 0; // variavel q vai guardar o indice do menro valor do vetor
     // 1, 5, 3, 4, 2
-    for(int i = 0; i < size; i++) {
+    for(int i = 0; i < size-1; i++) {
         index = i; // indice recebe o i da iteração atual
         menor = vet[i];
         for(int j = i; j < size; j++) {
@@ -98,6 +98,55 @@ void recursive_selection_sort(int vet[], int size, int index, int min, int curre
         recursive_selection_sort(vet, size, current_position+1, vet[current_position+1], current_position+1);
     
     }else return; // caso base
+}
+
+
+void merge(int vet[], int begin, int middle, int end) {
+    int size = end-begin+1;
+    int *vetAux = new int[size];
+    int beginAux = begin, midAux = middle+1; 
+    int current_position = 0;
+
+    while(beginAux <= middle && midAux <= end) {
+        if(vet[beginAux] < vet[midAux]) {
+            vetAux[current_position++] = vet[beginAux++];
+        }else{
+            vetAux[current_position++] = vet[midAux++];
+        }
+    }
+    while(beginAux <= middle) 
+        vetAux[current_position++] = vet[beginAux++];
+    
+    while(midAux <= end)
+        vetAux[current_position++] = vet[midAux++];
+    
+    for(int i = begin; i <= end; i++) 
+        vet[i] = vetAux[i-begin];
+
+
+    delete[] vetAux;
+}
+
+void recursive_merge_sort(int vet[], int begin, int end) {
+    if (begin < end) {
+        int middle = (end+begin)/2;
+
+        recursive_merge_sort(vet, begin, middle);
+        recursive_merge_sort(vet, middle+1, end);
+        merge(vet, begin, middle, end);
+    }
+}
+
+void iteractive_merge_sort(int vet[], int begin, int end) {
+    int middle = (end+begin)/2; // meio do vetor
+
+    // neste laço o vetor vai sendo passando
+    // começando com uma única posição
+    // logo após duas posições, três posições
+    // até o vetor inteiro ser passado
+    for(int i = begin; i < end-1; i++) 
+        merge(vet, begin, i, i+1);
+
 }
 
 // Verifica se o vetor está totalmente ordenado em ordem crescente

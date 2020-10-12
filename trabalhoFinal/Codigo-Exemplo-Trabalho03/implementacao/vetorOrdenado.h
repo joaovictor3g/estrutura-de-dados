@@ -19,6 +19,15 @@ void iteractive_selection_sort(int vet[], int size);
 // Selection Sort recursivo
 void recursive_selection_sort(int vet[], int size, int index, int min, int current);
 
+// Mescla os vetores
+void merge(int vet[], int begin, int middle, int end);
+
+// Merge sort iterativo
+void iteractive_merge_sort(int vet[], int begin, int end);
+
+// Merge Sort recursivo
+void recursive_merge_sort(int vet[], int begin, int end);
+
 // verifica se vetor esta ordenado em ordem crescente
 bool ascending_order(int vet[], int size);
 
