@@ -150,6 +150,43 @@ void iteractive_merge_sort(int vet[], int begin, int end) {
     merge(vet, begin, middle, end);
 }
 
+
+int partition(int vet[], int begin, int end) {
+    int pivot = vet[begin]; // pivô
+    int left = begin, right = end-1; 
+    while(left < right) {
+        while(vet[left] <= pivot) // verificando se os valores são menores que o pivô para qque estes sejam colocados a esquerda 
+            left++; // incremento até achar um elemento maior que o pivô, ou o fim do vetor
+        while(vet[right] > pivot) // valores maiores a direita
+            right--; // Decremento até achar um valor menor que o pivõ, ou o começo do vetor
+        if(left < right) // Se o left iterou e foi menor que o right uma troca é feita
+            std::swap(vet[left], vet[right]); // troca
+        
+    }
+    vet[begin] = vet[right]; // vetor na posição incial recebe o vetor na posição a direita
+    vet[right] = pivot;  // vetor a direita recebe pivot
+    return right; // retorno novo pivot, com todos os valores a esquerda menores e a direita maiores
+}
+
+void recursive_quick_sort(int vet[], int begin, int end) {
+    int pivot;
+    if(begin < end) {
+        pivot = partition(vet, begin, end); // escolhendo o pivo
+        recursive_quick_sort(vet, begin, pivot); // ordenando os valores até o pivot
+        recursive_quick_sort(vet, pivot+1, end); // ordenando os valores a direita do pivot
+    
+    }
+}
+
+void iteractive_quick_sort(int vet[], int begin, int end) {
+    int pivot = partition(vet, begin, end);
+
+    for(int i = 0; i < pivot-1; i++) {
+        int pivotAux = partition(vet, begin, i+1);
+        
+    }
+}
+
 // Verifica se o vetor está totalmente ordenado em ordem crescente
 bool ascending_order(int vet[], int size) {
     int counter = 0;

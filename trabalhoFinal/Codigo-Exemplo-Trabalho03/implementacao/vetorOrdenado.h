@@ -28,12 +28,19 @@ void iteractive_merge_sort(int vet[], int begin, int end);
 // Merge Sort recursivo
 void recursive_merge_sort(int vet[], int begin, int end);
 
+// Quick Sort Iterativo
+void iteractive_quick_sort(int vet[], int begin, int end);
+
+// retorna um pivô aleatório
+int partition(int vet[], int begin, int end);
+
+// Quick Sort Recursivo
+void recursive_quick_sort(int vet[], int begin, int end);
+
 // verifica se vetor esta ordenado em ordem crescente
 bool ascending_order(int vet[], int size);
 
 // Imprime o vetor
-// typing: recursivamente ou iterativamente
-// method: metodo de ordenação usado
 void print(int vet[], int size);
 
 #endif

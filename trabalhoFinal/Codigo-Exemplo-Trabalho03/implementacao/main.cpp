@@ -123,26 +123,29 @@ int main() {
 	// }
 	
 	// ofs2.close(); // fecha arquivo de resultados do CockTail Sort
-	
-	
-	// int* vet = new int[TAM];
-	// for(int i = 0; i < TAM; i++)
-	// 	vet[i] = rand()%100;
-	
-	
-	// cout << "Vetor original:";
-	// for(int i = 0; i < TAM; i++)
-	// 	cout << vet[i] << " ";
-	// cout << endl;
-	// int key = vet[1];
-	// int current = 1;
-	// int index = 0;
-	// int size = TAM;
-	// iteractive_merge_sort(vet, 0, size);
-	
-	// print(vet, TAM);
+	int fim = 0;
+	while(fim < 1) {
+		int* vet = new int[TAM];
+		for(int i = 0; i < TAM; i++)
+		vet[i] = rand()%100;
 
-	// delete[] vet;
+
+		cout << "Vetor original:";
+		for(int i = 0; i < TAM; i++)
+		cout << vet[i] << " ";
+		cout << endl;
+		int key = vet[1];
+		int current = 1;
+		int index = 0;
+		int size = TAM;
+		iteractive_quick_sort(vet, 0, size);
+
+		print(vet, TAM);
+		cout << endl;
+
+		delete[] vet;
+		fim++;
+	}
 
 	// std::ofstream ofs3("resultados/resultadoInsertionSortRec.txt", std::ofstream::out);
     // for(int iteracao = 0; iteracao < total_sizes; iteracao++) {
@@ -207,69 +210,69 @@ int main() {
 	// }
 	
 	// ofs4.close(); // fecha arquivo de resultados do Selection Sort Recursivo
-	// Merge Sort Recursivo
-	std::ofstream ofs5("resultados/resultadoMergeSortRec.txt", std::ofstream::out);
-    for(int iteracao = 0; iteracao < total_sizes; iteracao++) {
-		
-		long double duracao_media_bubble = 0.0;
-		int tamanho_vetor = sizes[iteracao]; // pega o tamanho do vetor para esta iteracao
-		int vet[tamanho_vetor]; // cria vetor a ser ordenado
-		
-
-		for(int semente = 0; semente < 5; semente++) {	
-			string nome_arquivo = "dados/random"+std::to_string(iteracao)+"_"+std::to_string(semente)+".dat";
-		
-			ler_dados(tamanho_vetor, vet, nome_arquivo.c_str());
-			
-			auto ini = std::chrono::high_resolution_clock::now();
-		    recursive_merge_sort(vet, 0, tamanho_vetor); // ordena o vetor usando o mergeSort
-			
-			auto fim = std::chrono::high_resolution_clock::now();
-		
-			// obtendo a duração total da ordenação
-			auto duracao_bubble = std::chrono::duration_cast<std::chrono::microseconds>(fim - ini).count();
-			
-			duracao_media_bubble += duracao_bubble;
-			
-		}
-		
-		duracao_media_bubble = duracao_media_bubble / 5.0;
-		cout << "[Merge Sort Recursivo] N = " << tamanho_vetor << ", tempo médio de execução = " << duracao_media_bubble << " microssegundos" << endl;
-		ofs5 << tamanho_vetor << " " << duracao_media_bubble << "\n"; // grava no arquivo de resultados do bubble
-	}
 	
-	ofs5.close();
-
-	// // merge Sort iterativo
-	std::ofstream ofs6("resultados/resultadoMergeSortIter.txt", std::ofstream::out);
-    for(int iteracao = 0; iteracao < total_sizes; iteracao++) {
+	// // Merge Sort Recursivo
+	// std::ofstream ofs5("resultados/resultadoMergeSortRec.txt", std::ofstream::out);
+    // for(int iteracao = 0; iteracao < total_sizes; iteracao++) {
 		
-		long double duracao_media_bubble = 0.0;
-		int tamanho_vetor = sizes[iteracao]; // pega o tamanho do vetor para esta iteracao
-		int vet[tamanho_vetor]; // cria vetor a ser ordenado
+	// 	long double duracao_media_bubble = 0.0;
+	// 	int tamanho_vetor = sizes[iteracao]; // pega o tamanho do vetor para esta iteracao
+	// 	int vet[tamanho_vetor]; // cria vetor a ser ordenado
 		
 
-		for(int semente = 0; semente < 5; semente++) {	
-			string nome_arquivo = "dados/random"+std::to_string(iteracao)+"_"+std::to_string(semente)+".dat";
+	// 	for(int semente = 0; semente < 5; semente++) {	
+	// 		string nome_arquivo = "dados/random"+std::to_string(iteracao)+"_"+std::to_string(semente)+".dat";
 		
-			ler_dados(tamanho_vetor, vet, nome_arquivo.c_str());
+	// 		ler_dados(tamanho_vetor, vet, nome_arquivo.c_str());
 			
-			auto ini = std::chrono::high_resolution_clock::now();
-		    recursive_merge_sort(vet, 0, tamanho_vetor); // ordena o vetor usando o mergeSort
+	// 		auto ini = std::chrono::high_resolution_clock::now();
+	// 	    recursive_merge_sort(vet, 0, tamanho_vetor); // ordena o vetor usando o mergeSort
 			
-			auto fim = std::chrono::high_resolution_clock::now();
+	// 		auto fim = std::chrono::high_resolution_clock::now();
 		
-			// obtendo a duração total da ordenação
-			auto duracao_bubble = std::chrono::duration_cast<std::chrono::microseconds>(fim - ini).count();
+	// 		// obtendo a duração total da ordenação
+	// 		auto duracao_bubble = std::chrono::duration_cast<std::chrono::microseconds>(fim - ini).count();
 			
-			duracao_media_bubble += duracao_bubble;
+	// 		duracao_media_bubble += duracao_bubble;
 			
-		}
+	// 	}
 		
-		duracao_media_bubble = duracao_media_bubble / 5.0;
-		cout << "[Merge Sort Iterativo] N = " << tamanho_vetor << ", tempo médio de execução = " << duracao_media_bubble << " microssegundos" << endl;
-		ofs6 << tamanho_vetor << " " << duracao_media_bubble << "\n"; // grava no arquivo de resultados do bubble
-	}
+	// 	duracao_media_bubble = duracao_media_bubble / 5.0;
+	// 	cout << "[Merge Sort Recursivo] N = " << tamanho_vetor << ", tempo médio de execução = " << duracao_media_bubble << " microssegundos" << endl;
+	// 	ofs5 << tamanho_vetor << " " << duracao_media_bubble << "\n"; // grava no arquivo de resultados do bubble
+	// }
 	
-	ofs6.close();
+	// ofs5.close();
+
+	// // // merge Sort iterativo
+	// std::ofstream ofs6("resultados/resultadoMergeSortIter.txt", std::ofstream::out);
+    // for(int iteracao = 0; iteracao < total_sizes; iteracao++) {
+		
+	// 	long double duracao_media_bubble = 0.0;
+	// 	int tamanho_vetor = sizes[iteracao]; // pega o tamanho do vetor para esta iteracao
+	// 	int vet[tamanho_vetor]; // cria vetor a ser ordenado
+		
+
+	// 	for(int semente = 0; semente < 5; semente++) {	
+	// 		string nome_arquivo = "dados/random"+std::to_string(iteracao)+"_"+std::to_string(semente)+".dat";
+		
+	// 		ler_dados(tamanho_vetor, vet, nome_arquivo.c_str());
+			
+	// 		auto ini = std::chrono::high_resolution_clock::now();
+	// 	    recursive_merge_sort(vet, 0, tamanho_vetor); // ordena o vetor usando o mergeSort
+	// 		auto fim = std::chrono::high_resolution_clock::now();
+		
+	// 		// obtendo a duração total da ordenação
+	// 		auto duracao_bubble = std::chrono::duration_cast<std::chrono::microseconds>(fim - ini).count();
+			
+	// 		duracao_media_bubble += duracao_bubble;
+			
+	// 	}
+		
+	// 	duracao_media_bubble = duracao_media_bubble / 5.0;
+	// 	cout << "[Merge Sort Iterativo] N = " << tamanho_vetor << ", tempo médio de execução = " << duracao_media_bubble << " microssegundos" << endl;
+	// 	ofs6 << tamanho_vetor << " " << duracao_media_bubble << "\n"; // grava no arquivo de resultados do bubble
+	// }
+	
+	// ofs6.close();
 }
