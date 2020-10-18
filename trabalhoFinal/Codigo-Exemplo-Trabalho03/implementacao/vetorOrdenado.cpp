@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stack>
 #include "vetorOrdenado.h"
 
 void iteractive_bubble_sort(int v[], int size) {
@@ -147,7 +148,7 @@ void iteractive_merge_sort(int vet[], int begin, int end) {
         merge(vet, begin, i, i+1); // interacalando e ordenando a primeira parte
     for(int i = middle; i < end; i++)  // Loop do meio do vetor até o fim: segunda parte
         merge(vet, middle+1, i, i+1); // 
-    merge(vet, begin, middle, end);
+    merge(vet, begin, middle, end); // Ultimo merge que ordena o vetor inteiro
 }
 
 
@@ -179,12 +180,45 @@ void recursive_quick_sort(int vet[], int begin, int end) {
 }
 
 void iteractive_quick_sort(int vet[], int begin, int end) {
-    int pivot = partition(vet, begin, end);
-
-    for(int i = 0; i < pivot-1; i++) {
-        int pivotAux = partition(vet, begin, i+1);
-        
+    // Pilha auxiliar 
+    std::stack<int> *st = new std::stack<int>[end-begin];  
+  
+    // push os valores do começo e fim 
+    st->push(begin); 
+    st->push(end); 
+  
+    // Enquanto há elementos na pilha
+    // há elementos a ordenar
+    while (!st->empty()) { 
+        // atribuindo o topo ao fim 
+        end = st->top();
+        // exluindo o valor do topo
+        st->pop(); 
+        // atribuindo novo topo ao começo
+        begin = st->top();
+        // excluindo o novo topo
+        st->pop(); 
+  
+        // pivô recebe a partição do vetor
+        int pivot = partition(vet, begin, end); 
+  
+        // Ordenação da primeira metade do vetor 
+        // elementos menores que o pivô a esquerda
+        if (pivot > begin) { 
+            st->push(begin); 
+            st->push(pivot); 
+        } 
+  
+        // Ordenação da segunda metade do vetor
+        // elementos maiores que o pivô a direita.
+        if (pivot + 1 < end) { 
+            st->push(pivot + 1); 
+            st->push(end); 
+        } 
     }
+
+    delete[] st;
+
 }
 
 // Verifica se o vetor está totalmente ordenado em ordem crescente

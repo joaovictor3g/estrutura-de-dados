@@ -3,7 +3,7 @@
 #include <fstream>
 #include <chrono>
 #include "vetorOrdenado.h"
-#define TAM 10
+#define TAM 10000
 
 using namespace std;
 
@@ -123,29 +123,33 @@ int main() {
 	// }
 	
 	// ofs2.close(); // fecha arquivo de resultados do CockTail Sort
-	int fim = 0;
-	while(fim < 1) {
-		int* vet = new int[TAM];
-		for(int i = 0; i < TAM; i++)
-		vet[i] = rand()%100;
+	// int fim = 4;
+	// while(fim < 5) {
+	// 	int* vet = new int[TAM];
+	// 	for(int i = 0; i < TAM; i++)
+	// 		vet[i] = rand()%100;
+	// 	vet[0]=1;
+	// 	vet[1]=0;
+	// 	vet[2]=3;
+	// 	vet[3]=1;
+	// 	vet[4]=0;
 
+	// 	cout << "Vetor original:";
+	// 	for(int i = 0; i < TAM; i++)
+	// 	cout << vet[i] << " ";
+	// 	cout << endl;
+	// 	int key = vet[1];
+	// 	int current = 1;
+	// 	int index = 0;
+	// 	int size = TAM;
+	// 	iteractive_quick_sort(vet, 0, size);
 
-		cout << "Vetor original:";
-		for(int i = 0; i < TAM; i++)
-		cout << vet[i] << " ";
-		cout << endl;
-		int key = vet[1];
-		int current = 1;
-		int index = 0;
-		int size = TAM;
-		iteractive_quick_sort(vet, 0, size);
+	// 	print(vet, TAM);
+	// 	cout << endl;
 
-		print(vet, TAM);
-		cout << endl;
-
-		delete[] vet;
-		fim++;
-	}
+	// 	delete[] vet;
+	// 	fim++;
+	// }
 
 	// std::ofstream ofs3("resultados/resultadoInsertionSortRec.txt", std::ofstream::out);
     // for(int iteracao = 0; iteracao < total_sizes; iteracao++) {
@@ -275,4 +279,68 @@ int main() {
 	// }
 	
 	// ofs6.close();
+
+	std::ofstream ofs7("resultados/resultadoQuickSortRec.txt", std::ofstream::out);
+    for(int iteracao = 0; iteracao < total_sizes; iteracao++) {
+		
+		long double duracao_media_bubble = 0.0;
+		int tamanho_vetor = sizes[iteracao]; // pega o tamanho do vetor para esta iteracao
+		int vet[tamanho_vetor]; // cria vetor a ser ordenado
+		
+
+		for(int semente = 0; semente < 5; semente++) {	
+			string nome_arquivo = "dados/random"+std::to_string(iteracao)+"_"+std::to_string(semente)+".dat";
+		
+			ler_dados(tamanho_vetor, vet, nome_arquivo.c_str());
+			
+			auto ini = std::chrono::high_resolution_clock::now();
+		    recursive_quick_sort(vet, 0, tamanho_vetor); // ordena o vetor usando o quickSort
+			
+			auto fim = std::chrono::high_resolution_clock::now();
+		
+			// obtendo a duração total da ordenação
+			auto duracao_bubble = std::chrono::duration_cast<std::chrono::microseconds>(fim - ini).count();
+			
+			duracao_media_bubble += duracao_bubble;
+			
+		}
+		
+		duracao_media_bubble = duracao_media_bubble / 5.0;
+		cout << "[Quick Sort Recursivo] N = " << tamanho_vetor << ", tempo médio de execução = " << duracao_media_bubble << " microssegundos" << endl;
+		ofs7 << tamanho_vetor << " " << duracao_media_bubble << "\n"; 
+	}
+	
+	ofs7.close();
+
+	// // quick Sort iterativo
+	// std::ofstream ofs8("resultados/resultadoQuickSortIter.txt", std::ofstream::out);
+    // for(int iteracao = 0; iteracao < total_sizes; iteracao++) {
+		
+	// 	long double duracao_media_bubble = 0.0;
+	// 	int tamanho_vetor = sizes[iteracao]; // pega o tamanho do vetor para esta iteracao
+	// 	int vet[tamanho_vetor]; // cria vetor a ser ordenado
+		
+
+	// 	for(int semente = 0; semente < 5; semente++) {	
+	// 		string nome_arquivo = "dados/random"+std::to_string(iteracao)+"_"+std::to_string(semente)+".dat";
+		
+	// 		ler_dados(tamanho_vetor, vet, nome_arquivo.c_str());
+			
+	// 		auto ini = std::chrono::high_resolution_clock::now();
+	// 	    iteractive_quick_sort(vet, 0, tamanho_vetor); // ordena o vetor usando o quickkSort
+	// 		auto fim = std::chrono::high_resolution_clock::now();
+		
+	// 		// obtendo a duração total da ordenação
+	// 		auto duracao_bubble = std::chrono::duration_cast<std::chrono::microseconds>(fim - ini).count();
+			
+	// 		duracao_media_bubble += duracao_bubble;
+			
+	// 	}
+		
+	// 	duracao_media_bubble = duracao_media_bubble / 5.0;
+	// 	cout << "[Quick Sort Iterativo] N = " << tamanho_vetor << ", tempo médio de execução = " << duracao_media_bubble << " microssegundos" << endl;
+	// 	ofs8 << tamanho_vetor << " " << duracao_media_bubble << "\n"; // grava no arquivo de resultados do bubble
+	// }
+	
+	// ofs8.close();
 }
