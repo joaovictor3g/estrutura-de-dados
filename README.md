@@ -14,6 +14,6 @@
 ## `Trabalhos`
 
 - [x] [Trabalho 1](Projeto1)
-- [ ] [Trabalho Final](trabalhoFinal)
+- [x] [Trabalho Final](trabalhoFinal)
 
 
